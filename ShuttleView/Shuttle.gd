@@ -4,6 +4,7 @@ const SHUTTLE_ACCELERATION = 1
 const SHUTTLE_MAX_SPEED = 45
 const RANDOM_INITIAL_ROTATION = 0.1
 const RANDOM_ROTATION_VARIATION = 0.3
+const ROTATION_CORRECTION_STRENGTH = 0.02
 
 var rotation_strength = 0.0
 var rotation_correction = 0.0
@@ -32,7 +33,7 @@ func _physics_process(delta) -> void:
 	# This needs work - maybe input determines course correction strength, with the shuttle rotation varying randomly during the course of the game.
 	# Need to match the slider to the rotation strength that's occurring. It's constantly moving so you need to correct / match it
 	# on a regular basis.
-	rotation_correction += input_strength * 0.01
+	rotation_correction += input_strength * ROTATION_CORRECTION_STRENGTH
 
 
 func _on_BalanceTimer_timeout():

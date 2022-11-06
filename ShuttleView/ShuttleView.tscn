@@ -42,7 +42,7 @@ script = ExtResource( 3 )
 shape = SubResource( 3 )
 
 [node name="BalanceTimer" type="Timer" parent="Shuttle"]
-wait_time = 2.0
+wait_time = 3.0
 autostart = true
 
 [node name="WinArea" type="Area2D" parent="."]
