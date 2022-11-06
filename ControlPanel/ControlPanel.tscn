@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Theme/ControlPanel.tres" type="Theme" id=1]
 [ext_resource path="res://Theme/Inconsolata-VariableFont_wdth,wght.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://ControlPanel/Rotation box.gd" type="Script" id=3]
 [ext_resource path="res://ControlPanel/FuelGauge.gd" type="Script" id=4]
+[ext_resource path="res://ControlPanel/PreFlightButtons.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 58
@@ -37,8 +38,9 @@ script = ExtResource( 3 )
 [node name="RotationLabel" type="Label" parent="RotationBox"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -3.0
 custom_fonts/font = SubResource( 1 )
-text = "15"
+text = "-140"
 align = 2
 valign = 1
 
@@ -125,3 +127,69 @@ margin_left = 7.0
 margin_top = 8.0
 margin_right = -7.0
 margin_bottom = -8.0
+
+[node name="PreFlightButtons" type="GridContainer" parent="."]
+margin_left = 31.0
+margin_top = 26.0
+margin_right = 320.0
+margin_bottom = 359.0
+columns = 2
+script = ExtResource( 5 )
+
+[node name="Button" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
+margin_right = 143.0
+margin_bottom = 81.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button2" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
+margin_left = 147.0
+margin_right = 289.0
+margin_bottom = 81.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button3" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
+margin_top = 85.0
+margin_right = 143.0
+margin_bottom = 165.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button4" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
+margin_left = 147.0
+margin_top = 85.0
+margin_right = 289.0
+margin_bottom = 165.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button5" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
+margin_top = 169.0
+margin_right = 143.0
+margin_bottom = 249.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button6" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
+margin_left = 147.0
+margin_top = 169.0
+margin_right = 289.0
+margin_bottom = 249.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button7" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
+margin_top = 253.0
+margin_right = 143.0
+margin_bottom = 333.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button8" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
+margin_left = 147.0
+margin_top = 253.0
+margin_right = 289.0
+margin_bottom = 333.0
+size_flags_horizontal = 3
+size_flags_vertical = 3

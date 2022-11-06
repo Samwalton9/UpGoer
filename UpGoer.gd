@@ -8,7 +8,8 @@ func _ready() -> void:
 
 
 func _process(_delta) -> void:
-	Globals.shuttle_fuel_percentage = timer.time_left/timer.wait_time
+	if Globals.flying:
+		Globals.shuttle_fuel_percentage = timer.time_left/timer.wait_time
 
 
 func _on_game_over():
