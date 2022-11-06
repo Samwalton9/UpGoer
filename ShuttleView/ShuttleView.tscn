@@ -1,11 +1,15 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://ShuttleView/LoseArea.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ShuttleView/Shuttle.gd" type="Script" id=3]
+[ext_resource path="res://ShuttleView/ShuttleView.gd" type="Script" id=4]
+[ext_resource path="res://ShuttleView/BackgroundTexture.gd" type="Script" id=5]
+[ext_resource path="res://ShuttleView/LoseArea.gd" type="Script" id=6]
 
 [sub_resource type="Gradient" id=1]
-colors = PoolColorArray( 0.409479, 0.617729, 0.699219, 1, 0.515328, 0.78908, 0.9375, 1 )
+offsets = PoolRealArray( 0.0970149, 0.727612, 1 )
+colors = PoolColorArray( 0.409479, 0.617729, 0.699219, 1, 0.0590781, 0.124016, 0.157933, 1, 0.0440804, 0.102884, 0.134766, 1 )
 
 [sub_resource type="GradientTexture2D" id=2]
 gradient = SubResource( 1 )
@@ -17,13 +21,19 @@ extents = Vector2( 32, 32 )
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 240, 10 )
 
-[node name="ShuttleView" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 239.25, 8.75 )
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="ShuttleView" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="BackgroundTexture" type="TextureRect" parent="."]
+margin_top = -2601.0
 margin_right = 480.0
 margin_bottom = 900.0
 texture = SubResource( 2 )
 expand = true
+script = ExtResource( 5 )
 
 [node name="Shuttle" type="Sprite" parent="."]
 position = Vector2( 240, 868 )
@@ -42,7 +52,17 @@ position = Vector2( 240, -10 )
 shape = SubResource( 4 )
 
 [node name="LoseArea" parent="." instance=ExtResource( 2 )]
-position = Vector2( -20, -1 )
+position = Vector2( -20, 1 )
 
 [node name="LoseArea2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 480, 0 )
+position = Vector2( 480, 1 )
+
+[node name="LoseArea3" type="Area2D" parent="."]
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LoseArea3"]
+position = Vector2( 239.75, 910.25 )
+shape = SubResource( 5 )
+
+[connection signal="area_entered" from="WinArea" to="." method="_on_WinArea_area_entered"]
+[connection signal="area_entered" from="LoseArea3" to="LoseArea3" method="_on_LoseArea_area_entered"]
