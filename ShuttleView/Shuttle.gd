@@ -12,6 +12,7 @@ var rotation_correction = 0.0
 func _ready() -> void:
 	rotation_degrees = rand_range(-RANDOM_INITIAL_ROTATION, RANDOM_INITIAL_ROTATION)
 
+
 func _physics_process(delta) -> void:
 	# During stage one, the shuttle moves on the screen, until reaching
 	# the halfway point, then moves again in stage 3.

@@ -27,7 +27,7 @@ extents = Vector2( 239.25, 8.75 )
 script = ExtResource( 4 )
 
 [node name="BackgroundTexture" type="TextureRect" parent="."]
-margin_top = -2601.0
+margin_top = -67.0
 margin_right = 480.0
 margin_bottom = 900.0
 texture = SubResource( 2 )

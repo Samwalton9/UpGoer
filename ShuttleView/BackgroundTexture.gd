@@ -9,3 +9,4 @@ func _physics_process(delta):
 		# Once the top of the screen has been reached, on to stage 3
 		if -rect_position.y < distance_to_move:
 			Globals.stage = 3
+	print(rect_position)
