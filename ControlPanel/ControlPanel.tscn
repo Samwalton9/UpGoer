@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Theme/ControlPanel.tres" type="Theme" id=1]
 [ext_resource path="res://Theme/Inconsolata-VariableFont_wdth,wght.ttf" type="DynamicFontData" id=2]
@@ -6,6 +6,10 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 58
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 52
 font_data = ExtResource( 2 )
 
 [node name="ControlPanel" type="Control"]
@@ -43,3 +47,61 @@ margin_top = -18.0
 margin_right = 112.5
 text = "Rotation"
 align = 1
+
+[node name="ColorRect" type="ColorRect" parent="Rotation box"]
+margin_left = -72.0
+margin_right = -9.0
+margin_bottom = 63.0
+color = Color( 1, 0.890196, 0, 1 )
+
+[node name="Label" type="Label" parent="Rotation box/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Q"
+align = 1
+valign = 1
+
+[node name="ColorRect2" type="ColorRect" parent="Rotation box"]
+margin_left = 122.5
+margin_right = 185.5
+margin_bottom = 63.0
+color = Color( 1, 0.890196, 0, 1 )
+
+[node name="Label" type="Label" parent="Rotation box/ColorRect2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "E"
+align = 1
+valign = 1
+
+[node name="Label" type="Label" parent="Rotation box"]
+margin_left = 2.5
+margin_top = 74.0
+margin_right = 42.5
+margin_bottom = 92.0
+text = "Strength"
+
+[node name="StrengthLabel" type="Label" parent="Rotation box/Label"]
+margin_left = 14.0
+margin_top = 22.0
+margin_right = 54.0
+margin_bottom = 40.0
+
+[node name="Label2" type="Label" parent="Rotation box"]
+margin_left = 4.5
+margin_top = 120.0
+margin_right = 44.5
+margin_bottom = 138.0
+text = "Correction"
+
+[node name="CorrectionLabel" type="Label" parent="Rotation box/Label2"]
+margin_left = 14.0
+margin_top = 27.0
+margin_right = 54.0
+margin_bottom = 45.0
