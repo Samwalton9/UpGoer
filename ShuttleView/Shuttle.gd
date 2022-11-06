@@ -1,9 +1,9 @@
 extends Sprite
 
 const SHUTTLE_ACCELERATION = 1
-const SHUTTLE_MAX_SPEED = 50
+const SHUTTLE_MAX_SPEED = 45
 const RANDOM_INITIAL_ROTATION = 0.1
-const RANDOM_ROTATION_VARIATION = 0.1
+const RANDOM_ROTATION_VARIATION = 0.3
 
 var rotation_strength = 0.0
 var rotation_correction = 0.0
@@ -14,10 +14,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta) -> void:
-	# During stage one, the shuttle moves on the screen, until reaching
-	# the halfway point, then moves again in stage 3.
-	if Globals.stage == 1 or Globals.stage == 3:
-		position -= Vector2(0, SHUTTLE_MAX_SPEED).rotated(deg2rad(rotation_degrees)) * delta
+	position -= Vector2(0, SHUTTLE_MAX_SPEED).rotated(deg2rad(rotation_degrees)) * delta
 
 	# TODO: This is far from ideal, doesn't model things correctly once the shuttle is turning rapidly.
 	rotation_degrees += rotation_strength + rotation_correction
@@ -40,7 +37,6 @@ func _physics_process(delta) -> void:
 
 func _on_BalanceTimer_timeout():
 	# Update rotation strength
-	# TODO: Tweak this - I think it's still feasible to not need to touch rotation controls
 	rotation_strength = rand_range(
 		rotation_strength - RANDOM_ROTATION_VARIATION,
 		rotation_strength + RANDOM_ROTATION_VARIATION

@@ -1,7 +1,5 @@
 extends Node
 
-var stage = 1
-
 # Shuttle variables for display
 var shuttle_speed = 50
 
