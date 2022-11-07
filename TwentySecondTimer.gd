@@ -9,5 +9,7 @@ func _ready():
 func _on_LaunchTimer_timeout():
 	if Globals.preflight_successful:
 		Globals.flying = true
+	else:
+		Events.emit_signal("game_over")
 
 	start()

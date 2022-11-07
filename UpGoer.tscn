@@ -1,9 +1,21 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://ShuttleView/ShuttleView.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UpGoer.gd" type="Script" id=2]
 [ext_resource path="res://ControlPanel/ControlPanel.tscn" type="PackedScene" id=3]
 [ext_resource path="res://TwentySecondTimer.gd" type="Script" id=4]
+[ext_resource path="res://Theme/Inconsolata-VariableFont_wdth,wght.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Theme/ControlPanel.tres" type="Theme" id=6]
+[ext_resource path="res://GameOver.gd" type="Script" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 128
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 5 )
 
 [node name="UpGoer" type="Node2D"]
 script = ExtResource( 2 )
@@ -25,5 +37,58 @@ wait_time = 3.0
 one_shot = true
 autostart = true
 
+[node name="GameOver" type="Control" parent="."]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_right = 1440.0
+margin_bottom = 900.0
+theme = ExtResource( 6 )
+script = ExtResource( 7 )
+
+[node name="Fade" type="ColorRect" parent="GameOver"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.607843 )
+
+[node name="GameOverLabel" type="Label" parent="GameOver/Fade"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -288.0
+margin_top = -197.0
+margin_right = 288.0
+margin_bottom = -62.0
+custom_fonts/font = SubResource( 1 )
+text = "Game Over"
+align = 1
+
+[node name="GeneralMessageLabel" type="Label" parent="GameOver/Fade/GameOverLabel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -296.0
+margin_top = 9.0
+margin_right = 296.0
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 2 )
+text = "You will not be going to space today."
+align = 1
+
+[node name="RestartButton" type="Button" parent="GameOver/Fade"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -136.5
+margin_top = -202.0
+margin_right = 136.5
+margin_bottom = -166.0
+text = "Restart"
+
 [connection signal="timeout" from="TwentySecondTimer" to="." method="_on_TwentySecondTimer_timeout"]
 [connection signal="timeout" from="TwentySecondTimer/LaunchTimer" to="TwentySecondTimer" method="_on_LaunchTimer_timeout"]
+[connection signal="pressed" from="GameOver/Fade/RestartButton" to="." method="_on_RestartButton_pressed"]

@@ -14,3 +14,10 @@ var flying = false
 
 func _ready() -> void:
 	randomize()
+
+
+func reset():
+	# TODO: A way to reset all the variables to their default values.
+	# One answer I saw suggested a dictionary format for looping through vars
+	pass
+

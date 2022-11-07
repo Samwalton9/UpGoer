@@ -34,5 +34,4 @@ func _on_button_pressed(button):
 			passed_preflight()
 
 	else:
-		# Fail state
 		pass
