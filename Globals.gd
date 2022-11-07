@@ -24,6 +24,7 @@ var flying = FLYING
 
 
 func _ready() -> void:
+	randomize()
 	reset()
 
 
