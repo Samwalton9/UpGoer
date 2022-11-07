@@ -29,9 +29,9 @@ color = Color( 0.635294, 0.654902, 0.654902, 1 )
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -56.5
-margin_top = 26.0
+margin_top = 47.0
 margin_right = 56.5
-margin_bottom = 89.0
+margin_bottom = 110.0
 color = Color( 0, 0, 0, 1 )
 script = ExtResource( 3 )
 
@@ -130,9 +130,9 @@ margin_bottom = -8.0
 
 [node name="PreFlightButtons" type="GridContainer" parent="."]
 margin_left = 31.0
-margin_top = 26.0
+margin_top = 78.0
 margin_right = 320.0
-margin_bottom = 359.0
+margin_bottom = 411.0
 columns = 2
 script = ExtResource( 5 )
 
@@ -193,3 +193,10 @@ margin_right = 289.0
 margin_bottom = 333.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="PreFlightChecksLabel" type="Label" parent="."]
+margin_left = 32.0
+margin_top = 48.0
+margin_right = 175.0
+margin_bottom = 66.0
+text = "Pre-flight checks"
