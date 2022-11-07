@@ -32,6 +32,3 @@ func _on_button_pressed(button):
 
 		if correct_preflight_checks == 3:
 			passed_preflight()
-
-	else:
-		pass

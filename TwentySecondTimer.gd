@@ -10,6 +10,6 @@ func _on_LaunchTimer_timeout():
 	if Globals.preflight_successful:
 		Globals.flying = true
 	else:
-		Events.emit_signal("game_over")
+		Events.emit_signal("game_over", "Preflight checks not completed successfully, launch aborted.")
 
 	start()

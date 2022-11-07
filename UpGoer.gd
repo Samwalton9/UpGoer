@@ -13,16 +13,18 @@ func _process(_delta) -> void:
 		Globals.shuttle_fuel_percentage = timer.time_left/timer.wait_time
 
 
-func _on_game_over():
-	print("You are having a bad problem and you will not go to space today.")
-
+func _on_game_over(fail_message : String):
 	gameOver.visible = true
 	get_tree().paused = true
 
+	$GameOver.game_over_text = fail_message
+
 
 func _on_TwentySecondTimer_timeout():
-	print("Ran out of fuel, game over.")
+	Events.emit_signal("game_over", "You ran out of fuel.")
 
 
 func _on_RestartButton_pressed():
-	get_tree().change_scene("res://UpGoer.tscn")
+	get_tree().reload_current_scene()
+	Globals.reset()
+	get_tree().paused = false

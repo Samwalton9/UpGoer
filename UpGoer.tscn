@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://ShuttleView/ShuttleView.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UpGoer.gd" type="Script" id=2]
@@ -15,6 +15,10 @@ font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 32
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 26
 font_data = ExtResource( 5 )
 
 [node name="UpGoer" type="Node2D"]
@@ -76,6 +80,21 @@ margin_right = 296.0
 margin_bottom = 44.0
 custom_fonts/font = SubResource( 2 )
 text = "You will not be going to space today."
+align = 1
+
+[node name="SpecificMessageLabel" type="Label" parent="GameOver/Fade/GameOverLabel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -290.0
+margin_top = 269.5
+margin_right = 292.0
+margin_bottom = 287.5
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 3 )
+text = "Test message please ignore"
 align = 1
 
 [node name="RestartButton" type="Button" parent="GameOver/Fade"]
