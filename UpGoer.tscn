@@ -253,6 +253,16 @@ margin_bottom = 168.0
 custom_fonts/font = SubResource( 6 )
 text = "Start game"
 
+[node name="MadeFor" type="Label" parent="StartScreen/Text"]
+margin_left = -65.0
+margin_top = 415.0
+margin_right = 105.0
+margin_bottom = 429.0
+grow_horizontal = 2
+text = "Made with Godot for the 20 Second Game Jam (2022)"
+align = 1
+valign = 1
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="StartScreen"]
 anims/FadeIn = SubResource( 9 )
 anims/RESET = SubResource( 10 )
