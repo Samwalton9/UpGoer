@@ -10,7 +10,7 @@ func _ready():
 		button.connect("pressed", self, "_on_button_pressed", [button])
 
 
-	for i in range(NUM_PREFLIGHT_CHECKS):
+	for _i in range(NUM_PREFLIGHT_CHECKS):
 		var random_choice = randi() % preflight_buttons.size()
 		var button = preflight_buttons[random_choice]
 		preflight_buttons.pop_at(random_choice)

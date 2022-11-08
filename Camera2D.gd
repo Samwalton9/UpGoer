@@ -3,7 +3,7 @@ extends Camera2D
 var screen_shake_amount : float = 0.0
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Globals.flying:
 		screen_shake_amount = Globals.shuttle_position/400
 
