@@ -29,7 +29,7 @@ func _physics_process(delta) -> void:
 		# TODO: Temporary, this will accelerate eventually.
 		Globals.shuttle_speed = SHUTTLE_MAX_SPEED
 
-		var input_strength = Input.get_action_strength("rotate_right") - Input.get_action_strength("rotate_left")
+		var input_strength = Input.get_axis("rotate_left", "rotate_right")
 
 		# This needs work - maybe input determines course correction strength, with the shuttle rotation varying randomly during the course of the game.
 		# Need to match the slider to the rotation strength that's occurring. It's constantly moving so you need to correct / match it
