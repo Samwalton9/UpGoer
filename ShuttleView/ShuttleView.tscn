@@ -57,7 +57,7 @@ shape = SubResource( 4 )
 script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LoseArea3"]
-position = Vector2( 239.75, 910.25 )
+position = Vector2( 239.75, 923.25 )
 shape = SubResource( 5 )
 
 [node name="LoseArea" parent="." instance=ExtResource( 5 )]
