@@ -247,6 +247,10 @@ text = "A"
 align = 1
 valign = 1
 
+[node name="Timer" type="Timer" parent="Gauges/HBoxContainer/GasGauge" groups=["GaugeFillTimer"]]
+wait_time = 0.3
+one_shot = true
+
 [node name="GasGauge2" type="ColorRect" parent="Gauges/HBoxContainer"]
 margin_left = 157.0
 margin_right = 290.0
@@ -279,6 +283,10 @@ text = "S"
 align = 1
 valign = 1
 
+[node name="Timer" type="Timer" parent="Gauges/HBoxContainer/GasGauge2" groups=["GaugeFillTimer"]]
+wait_time = 0.3
+one_shot = true
+
 [node name="GasGauge3" type="ColorRect" parent="Gauges/HBoxContainer"]
 margin_left = 315.0
 margin_right = 448.0
@@ -310,3 +318,7 @@ custom_fonts/font = SubResource( 2 )
 text = "D"
 align = 1
 valign = 1
+
+[node name="Timer" type="Timer" parent="Gauges/HBoxContainer/GasGauge3" groups=["GaugeFillTimer"]]
+wait_time = 0.3
+one_shot = true
