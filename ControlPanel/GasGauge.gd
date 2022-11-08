@@ -23,7 +23,7 @@ func _ready():
 
 	for action in InputMap.get_action_list(gauge_input):
 		# Assume there's only one possible, physical key, input
-		$ColorRect3/Key.text = OS.get_scancode_string(action.physical_scancode)
+		$KeyBox/Key.text = OS.get_scancode_string(action.physical_scancode)
 
 	gauge.color = gauge_color
 
