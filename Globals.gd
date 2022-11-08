@@ -22,6 +22,7 @@ var shuttle_fuel_percentage = SHUTTLE_FUEL_PERCENTAGE
 var preflight_successful = PREFLIGHT_SUCCESSFUL
 var flying = FLYING
 
+var restarted = false
 
 func _ready() -> void:
 	randomize()

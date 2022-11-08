@@ -26,5 +26,18 @@ func _on_TwentySecondTimer_timeout():
 
 func _on_RestartButton_pressed():
 	get_tree().reload_current_scene()
-	Globals.reset()
 	get_tree().paused = false
+
+	Globals.reset()
+	Globals.restarted = true
+
+
+func _on_StartButton_pressed():
+	$StartScreen/Text.visible = false
+	$StartScreen/AnimationPlayer.play("FadeIn")
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "FadeIn":
+		$TwentySecondTimer/LaunchTimer.start()
+		$StartScreen.visible = false
