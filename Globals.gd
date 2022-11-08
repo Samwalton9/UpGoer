@@ -1,5 +1,6 @@
 extends Node
 
+const SHUTTLE_POSITION = 0.0
 const SHUTTLE_SPEED = 0
 const SHUTTLE_ROTATION = 0
 const SHUTTLE_ROTATION_STRENGTH = 0.0
@@ -11,16 +12,17 @@ const PREFLIGHT_SUCCESSFUL = false
 const FLYING = false
 
 
-var shuttle_speed = SHUTTLE_SPEED
+var shuttle_position
+var shuttle_speed
 
-var shuttle_rotation = SHUTTLE_ROTATION
-var shuttle_rotation_strength = SHUTTLE_ROTATION_STRENGTH
-var shuttle_rotation_correction = SHUTTLE_ROTATION_CORRECTION
+var shuttle_rotation
+var shuttle_rotation_strength
+var shuttle_rotation_correction
 
-var shuttle_fuel_percentage = SHUTTLE_FUEL_PERCENTAGE
+var shuttle_fuel_percentage
 
-var preflight_successful = PREFLIGHT_SUCCESSFUL
-var flying = FLYING
+var preflight_successful
+var flying
 
 var restarted = false
 
@@ -30,6 +32,7 @@ func _ready() -> void:
 
 
 func reset():
+	shuttle_position = SHUTTLE_POSITION
 	shuttle_speed = SHUTTLE_SPEED
 
 	shuttle_rotation = SHUTTLE_ROTATION

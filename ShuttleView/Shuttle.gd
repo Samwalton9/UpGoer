@@ -46,6 +46,8 @@ func _physics_process(delta) -> void:
 
 		rotation_correction += input_strength * ROTATION_CORRECTION_STRENGTH
 
+		Globals.shuttle_position = position.y
+
 
 func _on_BalanceTimer_timeout():
 	# Update rotation strength
