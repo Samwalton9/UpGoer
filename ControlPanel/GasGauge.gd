@@ -43,7 +43,14 @@ func _process(delta):
 
 		var growth_amount = random_growth_speed * delta
 
-		if growth_amount > (1 - level):
+		var left_until_full = 1 - level
+
+		if left_until_full < (growth_amount * 60):
+			$WarningLight.color = Color(1, 0, 0, 1)
+		else:
+			$WarningLight.color = Color(0, 1, 0, 1)
+
+		if growth_amount > left_until_full:
 			growth_amount = 0
 			if gauge_fill_timer.is_stopped():
 				gauge_fill_timer.start()
