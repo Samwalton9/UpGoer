@@ -340,7 +340,6 @@ text = "Release boosters"
 [node name="ReleaseTimer" type="Timer" parent="BoosterReleaseButton"]
 wait_time = 10.0
 one_shot = true
-autostart = true
 
 [node name="ReactionTimer" type="Timer" parent="BoosterReleaseButton"]
 wait_time = 2.0

@@ -3,6 +3,10 @@ extends Control
 var ready_to_release = false
 
 
+func _ready() -> void:
+	Events.connect("preflight_success", self, "_on_preflight_success")
+
+
 func _on_ReleaseTimer_timeout():
 	$ReleaseHighlight.visible = true
 	$ReactionTimer.start()
@@ -22,3 +26,7 @@ func _on_ReleaseButton_pressed():
 	else:
 		# TODO: Likewise, could be a rapid deceleration instead.
 		Events.emit_signal("game_over", "Released boosters too early.")
+
+
+func _on_preflight_success():
+	$ReleaseTimer.start()
