@@ -26,6 +26,8 @@ func _on_button_pressed(button):
 			active_button = null
 		else:
 			Events.emit_signal("game_over", "Pressed the wrong button.")
+	else:
+		Events.emit_signal("game_over", "Pressed a button which didn't need pressing.")
 
 
 func _on_preflight_success():
