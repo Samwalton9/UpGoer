@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Theme/ControlPanel.tres" type="Theme" id=1]
 [ext_resource path="res://Theme/Inconsolata-VariableFont_wdth,wght.ttf" type="DynamicFontData" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://ControlPanel/ReactionButton.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ControlPanel/GasGauge.tscn" type="PackedScene" id=7]
 [ext_resource path="res://ControlPanel/ButtonArray.gd" type="Script" id=8]
+[ext_resource path="res://ControlPanel/BoosterReleaseButton.gd" type="Script" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 58
@@ -313,4 +314,39 @@ margin_bottom = 287.0
 [node name="ButtonArrayTimer" type="Timer" parent="ButtonArray"]
 wait_time = 3.0
 
+[node name="BoosterReleaseButton" type="Control" parent="."]
+margin_left = 608.0
+margin_top = 589.0
+margin_right = 778.0
+margin_bottom = 759.0
+script = ExtResource( 9 )
+
+[node name="ReleaseHighlight" type="ColorRect" parent="BoosterReleaseButton"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -101.0
+margin_top = -101.0
+margin_right = 101.0
+margin_bottom = 101.0
+
+[node name="ReleaseButton" type="Button" parent="BoosterReleaseButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Release boosters"
+
+[node name="ReleaseTimer" type="Timer" parent="BoosterReleaseButton"]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="ReactionTimer" type="Timer" parent="BoosterReleaseButton"]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="timeout" from="ButtonArray/ButtonArrayTimer" to="ButtonArray" method="_on_ButtonArrayTimer_timeout"]
+[connection signal="pressed" from="BoosterReleaseButton/ReleaseButton" to="BoosterReleaseButton" method="_on_ReleaseButton_pressed"]
+[connection signal="timeout" from="BoosterReleaseButton/ReleaseTimer" to="BoosterReleaseButton" method="_on_ReleaseTimer_timeout"]
+[connection signal="timeout" from="BoosterReleaseButton/ReactionTimer" to="BoosterReleaseButton" method="_on_ReactionTimer_timeout"]
