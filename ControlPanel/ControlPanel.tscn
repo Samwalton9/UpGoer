@@ -5,7 +5,7 @@
 [ext_resource path="res://ControlPanel/Rotation box.gd" type="Script" id=3]
 [ext_resource path="res://ControlPanel/FuelGauge.gd" type="Script" id=4]
 [ext_resource path="res://ControlPanel/PreFlightButtons.gd" type="Script" id=5]
-[ext_resource path="res://ControlPanel/Gauges.gd" type="Script" id=6]
+[ext_resource path="res://ControlPanel/GasGauge.tscn" type="PackedScene" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 58
@@ -209,116 +209,24 @@ margin_left = 38.0
 margin_top = -329.0
 margin_right = 486.0
 margin_bottom = -101.0
-script = ExtResource( 6 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Gauges"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/separation = 25
 
-[node name="GasGauge" type="ColorRect" parent="Gauges/HBoxContainer"]
-margin_right = 132.0
-margin_bottom = 228.0
-size_flags_horizontal = 3
-color = Color( 0, 0, 0, 1 )
+[node name="GasGauge" parent="Gauges/HBoxContainer" instance=ExtResource( 7 )]
+gauge_input = "gauge_one"
+gauge_color = Color( 1, 0, 0, 1 )
 
-[node name="ColorRect" type="ColorRect" parent="Gauges/HBoxContainer/GasGauge" groups=["Gauge"]]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 12.0
-margin_top = 10.0
-margin_right = -12.0
-margin_bottom = -10.0
-color = Color( 1, 0, 0, 1 )
-
-[node name="ColorRect3" type="ColorRect" parent="Gauges/HBoxContainer/GasGauge"]
-margin_left = 30.0
-margin_top = 236.0
-margin_right = 93.0
-margin_bottom = 299.0
-color = Color( 1, 0.890196, 0, 1 )
-
-[node name="Label" type="Label" parent="Gauges/HBoxContainer/GasGauge/ColorRect3"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 2 )
-text = "A"
-align = 1
-valign = 1
-
-[node name="Timer" type="Timer" parent="Gauges/HBoxContainer/GasGauge" groups=["GaugeFillTimer"]]
-wait_time = 0.3
-one_shot = true
-
-[node name="GasGauge2" type="ColorRect" parent="Gauges/HBoxContainer"]
+[node name="GasGauge2" parent="Gauges/HBoxContainer" instance=ExtResource( 7 )]
 margin_left = 157.0
 margin_right = 290.0
-margin_bottom = 228.0
-size_flags_horizontal = 3
-color = Color( 0, 0, 0, 1 )
+gauge_input = "gauge_two"
+gauge_color = Color( 0.968627, 1, 0, 1 )
 
-[node name="ColorRect" type="ColorRect" parent="Gauges/HBoxContainer/GasGauge2" groups=["Gauge"]]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 12.0
-margin_top = 11.0
-margin_right = -12.0
-margin_bottom = -11.0
-color = Color( 0.101961, 0, 1, 1 )
-
-[node name="ColorRect4" type="ColorRect" parent="Gauges/HBoxContainer/GasGauge2"]
-margin_left = 28.0
-margin_top = 237.0
-margin_right = 91.0
-margin_bottom = 300.0
-color = Color( 1, 0.890196, 0, 1 )
-
-[node name="Label" type="Label" parent="Gauges/HBoxContainer/GasGauge2/ColorRect4"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 2 )
-text = "S"
-align = 1
-valign = 1
-
-[node name="Timer" type="Timer" parent="Gauges/HBoxContainer/GasGauge2" groups=["GaugeFillTimer"]]
-wait_time = 0.3
-one_shot = true
-
-[node name="GasGauge3" type="ColorRect" parent="Gauges/HBoxContainer"]
+[node name="GasGauge3" parent="Gauges/HBoxContainer" instance=ExtResource( 7 )]
 margin_left = 315.0
 margin_right = 448.0
-margin_bottom = 228.0
-size_flags_horizontal = 3
-color = Color( 0, 0, 0, 1 )
-
-[node name="ColorRect" type="ColorRect" parent="Gauges/HBoxContainer/GasGauge3" groups=["Gauge"]]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 11.0
-margin_top = 11.0
-margin_right = -11.0
-margin_bottom = -11.0
-color = Color( 0.968627, 1, 0, 1 )
-
-[node name="ColorRect5" type="ColorRect" parent="Gauges/HBoxContainer/GasGauge3"]
-margin_left = 31.0
-margin_top = 235.0
-margin_right = 94.0
-margin_bottom = 298.0
-color = Color( 1, 0.890196, 0, 1 )
-
-[node name="Label" type="Label" parent="Gauges/HBoxContainer/GasGauge3/ColorRect5"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 2 )
-text = "D"
-align = 1
-valign = 1
-
-[node name="Timer" type="Timer" parent="Gauges/HBoxContainer/GasGauge3" groups=["GaugeFillTimer"]]
-wait_time = 0.3
-one_shot = true
+gauge_input = "gauge_three"
+gauge_color = Color( 0, 0.0156863, 1, 1 )
