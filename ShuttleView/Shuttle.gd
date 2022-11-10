@@ -10,6 +10,7 @@ const GRAVITY = Vector2(0, 10)
 
 var rotation_strength = 0.0
 var rotation_correction = 0.0
+var shuttle_speed = 0.0
 
 var docked = true
 var original_position : Vector2
@@ -18,11 +19,12 @@ var original_position : Vector2
 func _ready() -> void:
 	rotation_degrees = rand_range(-RANDOM_INITIAL_ROTATION, RANDOM_INITIAL_ROTATION)
 	original_position = position
+	Globals.shuttle = self
 
 
 func _physics_process(delta) -> void:
 	if Globals.flying:
-		var shuttle_engine_direction = Vector2(0, -Globals.shuttle_speed).rotated(deg2rad(rotation_degrees))
+		var shuttle_engine_direction = Vector2(0, -shuttle_speed).rotated(deg2rad(rotation_degrees))
 		position += (shuttle_engine_direction + GRAVITY) * delta
 
 		# Once the shuttle has overcome gravity, release from the dock.
@@ -35,18 +37,11 @@ func _physics_process(delta) -> void:
 
 		rotation_degrees += rotation_strength + rotation_correction
 
-		# Update shuttle stats in use elsewhere
-		Globals.shuttle_rotation = rotation_degrees
-		Globals.shuttle_rotation_correction = rotation_correction
-		Globals.shuttle_rotation_strength = rotation_strength
-
-		Globals.shuttle_speed += SHUTTLE_ACCELERATION * delta
+		shuttle_speed += SHUTTLE_ACCELERATION * delta
 
 		var input_strength = Input.get_axis("rotate_left", "rotate_right")
 
 		rotation_correction += input_strength * ROTATION_CORRECTION_STRENGTH
-
-		Globals.shuttle_position = position.y
 
 
 func _on_BalanceTimer_timeout():

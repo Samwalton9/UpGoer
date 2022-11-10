@@ -1,30 +1,17 @@
 extends Node
 
-const SHUTTLE_POSITION = 0.0
-const SHUTTLE_SPEED = 0
-const SHUTTLE_ROTATION = 0
-const SHUTTLE_ROTATION_STRENGTH = 0.0
-const SHUTTLE_ROTATION_CORRECTION = 0.0
-
+var shuttle_fuel_percentage
 const SHUTTLE_FUEL_PERCENTAGE = 1.0
 
+var preflight_successful
 const PREFLIGHT_SUCCESSFUL = false
+
+var flying
 const FLYING = false
 
-
-var shuttle_position
-var shuttle_speed
-
-var shuttle_rotation
-var shuttle_rotation_strength
-var shuttle_rotation_correction
-
-var shuttle_fuel_percentage
-
-var preflight_successful
-var flying
-
 var restarted = false
+var fail_message = null
+var shuttle
 
 func _ready() -> void:
 	randomize()
@@ -32,14 +19,8 @@ func _ready() -> void:
 
 
 func reset():
-	shuttle_position = SHUTTLE_POSITION
-	shuttle_speed = SHUTTLE_SPEED
-
-	shuttle_rotation = SHUTTLE_ROTATION
-	shuttle_rotation_strength = SHUTTLE_ROTATION_STRENGTH
-	shuttle_rotation_correction = SHUTTLE_ROTATION_CORRECTION
-
 	shuttle_fuel_percentage = SHUTTLE_FUEL_PERCENTAGE
 
 	preflight_successful = PREFLIGHT_SUCCESSFUL
 	flying = FLYING
+	fail_message = null
