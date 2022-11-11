@@ -59,8 +59,10 @@ func _process(delta):
 
 
 func get_random_growth_speed() -> float:
-	return rand_range(0.1,0.3)
+	return rand_range(0.05,0.2)
 
 
 func _on_Timer_timeout():
+	# TODO: Instead of instantly failing, the gauge explodes and we give
+	# the shuttle random + or - x-axis acceleration
 	Events.emit_signal("game_over", "A gauge got too high.")
