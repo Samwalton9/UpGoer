@@ -1,7 +1,6 @@
 extends Sprite
 
 const SHUTTLE_MAX_SPEED = 55
-const RANDOM_INITIAL_ROTATION = 0.1
 const RANDOM_ROTATION_VARIATION = 0.3
 const ROTATION_CORRECTION_STRENGTH = 0.02
 
@@ -16,9 +15,10 @@ var shuttle_acceleration = Vector2(0,-10)
 var docked = true
 var original_position : Vector2
 
+var skipped_first = false
+
 
 func _ready() -> void:
-	rotation_degrees = rand_range(-RANDOM_INITIAL_ROTATION, RANDOM_INITIAL_ROTATION)
 	original_position = position
 	Globals.shuttle = self
 
@@ -46,8 +46,11 @@ func _physics_process(delta) -> void:
 
 
 func _on_BalanceTimer_timeout():
-	# Update rotation strength
-	rotation_strength = rand_range(
-		rotation_strength - RANDOM_ROTATION_VARIATION,
-		rotation_strength + RANDOM_ROTATION_VARIATION
-		)
+	if skipped_first:
+		# Update rotation strength
+		rotation_strength = rand_range(
+			rotation_strength - RANDOM_ROTATION_VARIATION,
+			rotation_strength + RANDOM_ROTATION_VARIATION
+			)
+	else:
+		skipped_first = true
