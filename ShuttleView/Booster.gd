@@ -1,4 +1,4 @@
-extends Sprite
+extends AnimatedSprite
 
 var velocity = Vector2.ZERO
 var acceleration = Vector2.ZERO

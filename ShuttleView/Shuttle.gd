@@ -1,4 +1,4 @@
-extends Sprite
+extends Node2D
 
 const SHUTTLE_MAX_SPEED = 50
 const RANDOM_ROTATION_VARIATION = 0.3
