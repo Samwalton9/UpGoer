@@ -24,8 +24,8 @@ func _on_ReleaseButton_pressed():
 		$ReleaseHighlight.visible = false
 		$ReactionTimer.stop()
 	else:
-		# TODO: Likewise, could be a rapid deceleration instead.
-		Events.emit_signal("game_over", "Released boosters too early.")
+		Globals.shuttle.shuttle_acceleration = Vector2(0,20)
+		Globals.fail_message = "Released boosters too early."
 
 
 func _on_preflight_success():
