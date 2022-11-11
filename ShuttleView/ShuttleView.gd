@@ -5,7 +5,7 @@ onready var booster_one = $Shuttle/Booster1
 onready var booster_two = $Shuttle/Booster2
 
 var boosters_attached : bool = true
-var booster_rotation_strength : float = 0.7
+var booster_rotation_strength : float = 0.4
 
 
 func _ready():
@@ -15,7 +15,7 @@ func _ready():
 func _physics_process(delta):
 	if boosters_attached:
 		for booster in [booster_one, booster_two]:
-			booster.velocity = shuttle.velocity
+			booster.velocity = shuttle.velocity.rotated(rotation)
 			booster.acceleration = shuttle.acceleration
 
 
@@ -32,7 +32,7 @@ func _on_release_button_pressed(num):
 			reparent_to_self(booster)
 			booster.detached = true
 			booster.global_position = original_global_pos
-			#booster.acceleration = Vector2(0,-0.2)
+			booster.acceleration = -Globals.GRAVITY/2
 			booster.rotation = shuttle.rotation
 
 		boosters_attached = false

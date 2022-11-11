@@ -10,8 +10,8 @@ var detached : bool = false
 func _physics_process(delta):
 	if detached:
 		velocity += (acceleration + Globals.GRAVITY) * delta
-		var velocity_rotated = velocity.rotated(rotation)
+		#var velocity_rotated = velocity.rotated(rotation)
 
 		rotation_degrees += rotation_strength
 
-		position += velocity_rotated
+		position += velocity
