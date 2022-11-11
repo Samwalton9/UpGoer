@@ -2,7 +2,7 @@
 
 [ext_resource path="res://ControlPanel/BoosterReleaseButton.gd" type="Script" id=1]
 
-[node name="BoosterReleaseButton" type="Control"]
+[node name="ReleaseButton" type="Control"]
 margin_left = 606.0
 margin_top = 655.0
 margin_right = 776.0

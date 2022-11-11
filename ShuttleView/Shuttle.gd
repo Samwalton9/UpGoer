@@ -4,18 +4,17 @@ const SHUTTLE_MAX_SPEED = 50
 const RANDOM_ROTATION_VARIATION = 0.3
 const ROTATION_CORRECTION_STRENGTH = 0.02
 
-const GRAVITY = Vector2(0, 10)
-
 var rotation_strength = 0.0
 var rotation_correction = 0.0
 
-var shuttle_velocity = Vector2(0,0)
-var shuttle_acceleration = Vector2(0,-10)
+var velocity = Vector2(0,0)
+var acceleration = Vector2(0,-1.5)
 
 var docked = true
 var original_position : Vector2
 
 var skipped_first = false
+var powered = true
 
 
 func _ready() -> void:
@@ -25,23 +24,17 @@ func _ready() -> void:
 
 func _physics_process(delta) -> void:
 	if Globals.flying:
-		shuttle_velocity += shuttle_acceleration * delta
+		velocity += (acceleration + Globals.GRAVITY) * delta
 
-		var shuttle_velocity_rotated = shuttle_velocity.rotated(deg2rad(rotation_degrees))
-		position += (shuttle_velocity_rotated + GRAVITY) * delta
-
-		# Once the shuttle has overcome gravity, release from the dock.
-		if docked and shuttle_velocity_rotated.y > GRAVITY.y:
-			docked = false
-
-		if docked:
-			# Shuttle is docked while it builds up acceleration
-			position.y = min(position.y, original_position.y)
+		if powered:
+			var velocity_rotated = velocity.rotated(deg2rad(rotation_degrees))
+			position += velocity_rotated
+		else:
+			position += velocity
 
 		rotation_degrees += rotation_strength + rotation_correction
 
 		var input_strength = Input.get_axis("rotate_left", "rotate_right")
-
 		rotation_correction += input_strength * ROTATION_CORRECTION_STRENGTH
 
 
@@ -54,3 +47,7 @@ func _on_BalanceTimer_timeout():
 			)
 	else:
 		skipped_first = true
+
+
+func _on_DockTimer_timeout():
+	docked = false

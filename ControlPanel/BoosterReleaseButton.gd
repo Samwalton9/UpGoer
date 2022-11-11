@@ -2,7 +2,7 @@ extends Control
 
 var ready_to_release = false
 
-export var booster : int
+export var release_num : int
 export var release_time : float
 export var button_text : String
 
@@ -21,7 +21,8 @@ func _on_ReleaseTimer_timeout():
 
 func _on_ReactionTimer_timeout():
 	# Reduce acceleration drastically if boosters haven't been released.
-	Globals.shuttle.shuttle_acceleration = Vector2(0, 20)
+	Globals.shuttle.acceleration = Vector2(0, -0.01)
+	Globals.shuttle.powered = false
 	Globals.fail_message = "Didn't release boosters in time."
 
 
@@ -30,8 +31,11 @@ func _on_ReleaseButton_pressed():
 		$ReleaseHighlight.visible = false
 		$ReactionTimer.stop()
 	else:
-		Globals.shuttle.shuttle_acceleration = Vector2(0,20)
+		Globals.shuttle.acceleration = Vector2(0,-0.01)
+		Globals.shuttle.powered = false
 		Globals.fail_message = "Released boosters too early."
+
+	Events.emit_signal("release_button_pressed", release_num)
 
 
 func _on_preflight_success():

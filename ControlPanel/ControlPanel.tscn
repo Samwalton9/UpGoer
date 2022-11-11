@@ -235,14 +235,14 @@ margin_right = 448.0
 gauge_input = "gauge_three"
 gauge_color = Color( 0, 0.0156863, 1, 1 )
 
-[node name="BoosterReleaseButton1" parent="." instance=ExtResource( 6 )]
+[node name="BoosterRelease" parent="." instance=ExtResource( 6 )]
 margin_top = 415.0
 margin_bottom = 585.0
-booster = 1
+release_num = 1
 release_time = 8.0
-button_text = "Release stage 1"
+button_text = "Release boosters"
 
-[node name="BoosterReleaseButton2" parent="." instance=ExtResource( 6 )]
-booster = 2
+[node name="FuelRelease" parent="." instance=ExtResource( 6 )]
+release_num = 2
 release_time = 13.0
-button_text = "Release stage 2"
+button_text = "Release fuel"
