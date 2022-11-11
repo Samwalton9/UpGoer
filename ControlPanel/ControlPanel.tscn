@@ -5,8 +5,8 @@
 [ext_resource path="res://ControlPanel/Rotation box.gd" type="Script" id=3]
 [ext_resource path="res://ControlPanel/FuelGauge.gd" type="Script" id=4]
 [ext_resource path="res://ControlPanel/PreFlightButtons.gd" type="Script" id=5]
+[ext_resource path="res://ControlPanel/BoosterReleaseButton.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ControlPanel/GasGauge.tscn" type="PackedScene" id=7]
-[ext_resource path="res://ControlPanel/BoosterReleaseButton.gd" type="Script" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 58
@@ -235,37 +235,14 @@ margin_right = 448.0
 gauge_input = "gauge_three"
 gauge_color = Color( 0, 0.0156863, 1, 1 )
 
-[node name="BoosterReleaseButton" type="Control" parent="."]
-margin_left = 608.0
-margin_top = 589.0
-margin_right = 778.0
-margin_bottom = 759.0
-script = ExtResource( 9 )
+[node name="BoosterReleaseButton1" parent="." instance=ExtResource( 6 )]
+margin_top = 415.0
+margin_bottom = 585.0
+booster = 1
+release_time = 8.0
+button_text = "Release stage 1"
 
-[node name="ReleaseHighlight" type="ColorRect" parent="BoosterReleaseButton"]
-visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -101.0
-margin_top = -101.0
-margin_right = 101.0
-margin_bottom = 101.0
-
-[node name="ReleaseButton" type="Button" parent="BoosterReleaseButton"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-text = "Release boosters"
-
-[node name="ReleaseTimer" type="Timer" parent="BoosterReleaseButton"]
-wait_time = 10.0
-one_shot = true
-
-[node name="ReactionTimer" type="Timer" parent="BoosterReleaseButton"]
-wait_time = 2.0
-one_shot = true
-
-[connection signal="pressed" from="BoosterReleaseButton/ReleaseButton" to="BoosterReleaseButton" method="_on_ReleaseButton_pressed"]
-[connection signal="timeout" from="BoosterReleaseButton/ReleaseTimer" to="BoosterReleaseButton" method="_on_ReleaseTimer_timeout"]
-[connection signal="timeout" from="BoosterReleaseButton/ReactionTimer" to="BoosterReleaseButton" method="_on_ReactionTimer_timeout"]
+[node name="BoosterReleaseButton2" parent="." instance=ExtResource( 6 )]
+booster = 2
+release_time = 13.0
+button_text = "Release stage 2"
