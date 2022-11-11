@@ -2,7 +2,6 @@ extends Control
 
 var ready_to_release = false
 
-
 func _ready() -> void:
 	Events.connect("preflight_success", self, "_on_preflight_success")
 
@@ -15,8 +14,9 @@ func _on_ReleaseTimer_timeout():
 
 
 func _on_ReactionTimer_timeout():
-	# TODO: This could maybe be a soft fail instead, where you decelerate rapidly?
-	Events.emit_signal("game_over", "Didn't release boosters in time.")
+	# Reduce acceleration drastically if boosters haven't been released.
+	Globals.shuttle.shuttle_acceleration = Vector2(0, 20)
+	Globals.fail_message = "Didn't release boosters in time."
 
 
 func _on_ReleaseButton_pressed():

@@ -1,6 +1,5 @@
 extends Sprite
 
-const SHUTTLE_ACCELERATION = 10
 const SHUTTLE_MAX_SPEED = 55
 const RANDOM_INITIAL_ROTATION = 0.1
 const RANDOM_ROTATION_VARIATION = 0.3
@@ -10,7 +9,9 @@ const GRAVITY = Vector2(0, 10)
 
 var rotation_strength = 0.0
 var rotation_correction = 0.0
-var shuttle_speed = 0.0
+
+var shuttle_velocity = Vector2(0,0)
+var shuttle_acceleration = Vector2(0,-10)
 
 var docked = true
 var original_position : Vector2
@@ -24,11 +25,13 @@ func _ready() -> void:
 
 func _physics_process(delta) -> void:
 	if Globals.flying:
-		var shuttle_engine_direction = Vector2(0, -shuttle_speed).rotated(deg2rad(rotation_degrees))
-		position += (shuttle_engine_direction + GRAVITY) * delta
+		shuttle_velocity += shuttle_acceleration * delta
+
+		var shuttle_velocity_rotated = shuttle_velocity.rotated(deg2rad(rotation_degrees))
+		position += (shuttle_velocity_rotated + GRAVITY) * delta
 
 		# Once the shuttle has overcome gravity, release from the dock.
-		if docked and -shuttle_engine_direction.y > GRAVITY.y:
+		if docked and shuttle_velocity_rotated.y > GRAVITY.y:
 			docked = false
 
 		if docked:
@@ -36,8 +39,6 @@ func _physics_process(delta) -> void:
 			position.y = min(position.y, original_position.y)
 
 		rotation_degrees += rotation_strength + rotation_correction
-
-		shuttle_speed += SHUTTLE_ACCELERATION * delta
 
 		var input_strength = Input.get_axis("rotate_left", "rotate_right")
 
