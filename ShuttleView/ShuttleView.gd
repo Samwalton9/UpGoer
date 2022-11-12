@@ -46,7 +46,7 @@ func set_detached_state(node):
 	var vert_accel = node.release_direction * 1
 	var hori_accel = node.release_direction * -0.6
 
-	node.acceleration = Vector2(vert_accel, hori_accel)
+	node.acceleration = Vector2(vert_accel, hori_accel).rotated(node.rotation)
 	node.rotation = shuttle.rotation
 	node.rotation_strength = booster_rotation_strength * node.release_direction
 
