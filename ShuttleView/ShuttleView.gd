@@ -12,7 +12,7 @@ func _ready():
 	Events.connect("release_button_pressed", self, "_on_release_button_pressed")
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	for booster in [booster_one, booster_two, fuel]:
 		if not booster.detached:
 			# While attached, boosters match velocity and acceleration of the
