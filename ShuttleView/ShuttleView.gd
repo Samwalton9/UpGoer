@@ -29,11 +29,13 @@ func _on_release_button_pressed(num):
 	if num == 1:
 		# Reparent - detach from shuttle.
 		for booster in [booster_one, booster_two]:
-			set_detached_state(booster)
+			if not booster.detached:
+				set_detached_state(booster)
 
 	# Fuel release
 	elif num == 2:
-		set_detached_state(fuel)
+		if not fuel.detached:
+			set_detached_state(fuel)
 
 
 func set_detached_state(node):
