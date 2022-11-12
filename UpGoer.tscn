@@ -271,17 +271,17 @@ text = "Made with Godot for the 20 Second Game Jam (2022)"
 align = 1
 valign = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="StartScreen"]
+[node name="SharpenAnimation" type="AnimationPlayer" parent="StartScreen"]
 anims/FadeIn = SubResource( 9 )
 anims/RESET = SubResource( 10 )
 
-[node name="20s-logo-colour-200" type="Sprite" parent="StartScreen"]
+[node name="20sgjSprite" type="Sprite" parent="StartScreen"]
 position = Vector2( 1378, 840 )
 scale = Vector2( 0.392857, 0.392857 )
 texture = ExtResource( 10 )
 script = ExtResource( 13 )
 
-[node name="LinkButton" type="LinkButton" parent="StartScreen/20s-logo-colour-200"]
+[node name="LinkButton" type="LinkButton" parent="StartScreen/20sgjSprite"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -140.0
@@ -308,5 +308,5 @@ script = ExtResource( 9 )
 [connection signal="button_down" from="StartScreen/Text/StartButton" to="StartScreen" method="_on_StartButton_button_down"]
 [connection signal="button_up" from="StartScreen/Text/StartButton" to="StartScreen" method="_on_StartButton_button_up"]
 [connection signal="pressed" from="StartScreen/Text/StartButton" to="." method="_on_StartButton_pressed"]
-[connection signal="animation_finished" from="StartScreen/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
-[connection signal="pressed" from="StartScreen/20s-logo-colour-200/LinkButton" to="StartScreen/20s-logo-colour-200" method="_on_LinkButton_pressed"]
+[connection signal="animation_finished" from="StartScreen/SharpenAnimation" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="pressed" from="StartScreen/20sgjSprite/LinkButton" to="StartScreen/20sgjSprite" method="_on_LinkButton_pressed"]
