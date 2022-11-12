@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://ShuttleView/Assets/ShuttleFrames.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://ShuttleView/BalanceTimer.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://ShuttleView/LoseArea.tscn" type="PackedScene" id=5]
 [ext_resource path="res://ShuttleView/LoseArea.gd" type="Script" id=6]
 [ext_resource path="res://ShuttleView/Booster.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ShuttleView/DockSparks.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0.25, 0.66791, 0.88806, 1 )
@@ -37,7 +38,7 @@ texture = SubResource( 2 )
 expand = true
 
 [node name="Shuttle" type="Node2D" parent="."]
-position = Vector2( 240, 823 )
+position = Vector2( 240, 813 )
 script = ExtResource( 3 )
 
 [node name="Booster2" parent="Shuttle" instance=ExtResource( 7 )]
@@ -72,6 +73,15 @@ script = ExtResource( 2 )
 wait_time = 2.0
 one_shot = true
 autostart = true
+
+[node name="Dock" type="Node2D" parent="."]
+position = Vector2( 240, 859 )
+
+[node name="DockParticlesLeft" parent="Dock" instance=ExtResource( 8 )]
+
+[node name="DockParticlesRight" parent="Dock" instance=ExtResource( 8 )]
+position = Vector2( 51, 28 )
+rotation = 3.14159
 
 [node name="WinArea" type="Area2D" parent="."]
 

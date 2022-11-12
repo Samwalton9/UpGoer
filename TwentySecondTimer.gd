@@ -10,6 +10,7 @@ func _ready():
 
 func _on_LaunchTimer_timeout():
 	if Globals.preflight_successful:
+		Events.emit_signal("preflight_success")
 		Globals.flying = true
 		start()
 	else:

@@ -20,7 +20,6 @@ func _ready():
 
 
 func passed_preflight():
-	Events.emit_signal("preflight_success")
 	Globals.preflight_successful = true
 
 func _on_button_pressed(button):

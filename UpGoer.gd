@@ -34,10 +34,11 @@ func _on_RestartButton_pressed():
 
 func _on_StartButton_pressed():
 	$StartScreen/Text.visible = false
-	$StartScreen/AnimationPlayer.play("FadeIn")
+	$StartScreen/SharpenAnimation.play("FadeIn")
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "FadeIn":
 		$TwentySecondTimer/LaunchTimer.start()
 		$StartScreen.visible = false
+		Events.emit_signal("game_start")
