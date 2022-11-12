@@ -43,10 +43,12 @@ script = ExtResource( 3 )
 [node name="Booster2" parent="Shuttle" instance=ExtResource( 7 )]
 scale = Vector2( 2, 2 )
 frame = 2
+release_direction = 1
 
 [node name="Booster1" parent="Shuttle" instance=ExtResource( 7 )]
 scale = Vector2( 2, 2 )
 frame = 1
+release_direction = -1
 
 [node name="Fuel" parent="Shuttle" instance=ExtResource( 7 )]
 scale = Vector2( 2, 2 )

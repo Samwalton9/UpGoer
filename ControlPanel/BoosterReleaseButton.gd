@@ -21,7 +21,7 @@ func _on_ReleaseTimer_timeout():
 
 func _on_ReactionTimer_timeout():
 	# Reduce acceleration drastically if boosters haven't been released.
-	Globals.shuttle.acceleration = Vector2(0, -0.01)
+	Globals.shuttle.acceleration = Vector2(0, -0.5)
 	Globals.shuttle.powered = false
 	Globals.fail_message = "Didn't release boosters in time."
 
