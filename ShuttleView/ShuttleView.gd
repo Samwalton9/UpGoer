@@ -7,6 +7,7 @@ onready var fuel = $Fuel
 
 onready var remote_transform_one = $Shuttle/Booster1RemoteTransform
 onready var remote_transform_two = $Shuttle/Booster2RemoteTransform
+onready var remote_transform_fuel = $Shuttle/FuelRemoteTransform
 
 var booster_rotation_strength : float = 0.4
 
@@ -47,6 +48,8 @@ func _on_release_button_pressed(num):
 	elif num == 2:
 		if not fuel.detached:
 			set_detached_state(fuel)
+			remote_transform_fuel.update_position = false
+			remote_transform_fuel.update_rotation = false
 
 
 func set_detached_state(node):
