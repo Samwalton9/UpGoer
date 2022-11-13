@@ -10,7 +10,6 @@ var rotation_correction = 0.0
 var velocity = Vector2(0,0)
 var acceleration = Vector2(0,-1.15)
 
-var docked = true
 var original_position : Vector2
 
 var skipped_first = false
@@ -47,7 +46,3 @@ func _on_BalanceTimer_timeout():
 			)
 	else:
 		skipped_first = true
-
-
-func _on_DockTimer_timeout():
-	docked = false
