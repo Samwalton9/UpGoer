@@ -10,8 +10,9 @@ colors = PoolColorArray( 1, 0.940599, 0.708934, 1, 1, 0.904723, 0.533141, 1, 0.9
 gradient = SubResource( 1 )
 
 [sub_resource type="ParticlesMaterial" id=3]
+lifetime_randomness = 0.3
 emission_shape = 2
-emission_box_extents = Vector3( 8, 1, 1 )
+emission_box_extents = Vector3( 5, 1, 1 )
 flag_disable_z = true
 direction = Vector3( 0, 1, 0 )
 spread = 20.0
@@ -29,9 +30,9 @@ color_ramp = SubResource( 2 )
 
 [node name="FuelParticles" type="Particles2D"]
 emitting = false
-amount = 700
-lifetime = 10.0
-preprocess = 0.5
+amount = 10000
+lifetime = 15.0
+preprocess = 0.2
 randomness = 1.0
 local_coords = false
 process_material = SubResource( 3 )
