@@ -47,7 +47,7 @@ frame = 2
 release_direction = 1
 
 [node name="FuelParticles" parent="Shuttle/Booster2" index="0"]
-position = Vector2( 12.5, 41 )
+position = Vector2( -14.5, 39 )
 
 [node name="Booster1" parent="Shuttle" instance=ExtResource( 7 )]
 scale = Vector2( 2, 2 )
@@ -55,7 +55,7 @@ frame = 1
 release_direction = -1
 
 [node name="FuelParticles" parent="Shuttle/Booster1" index="0"]
-position = Vector2( -15, 41 )
+position = Vector2( 12, 39 )
 
 [node name="Fuel" parent="Shuttle" instance=ExtResource( 7 )]
 scale = Vector2( 2, 2 )
