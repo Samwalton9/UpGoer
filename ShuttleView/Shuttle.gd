@@ -8,7 +8,7 @@ var rotation_strength = 0.0
 var rotation_correction = 0.0
 
 var velocity = Vector2(0,0)
-var acceleration = Vector2(0,-1.15)
+var acceleration = Vector2(0,-1.1)
 
 var original_position : Vector2
 
