@@ -46,10 +46,16 @@ scale = Vector2( 2, 2 )
 frame = 2
 release_direction = 1
 
+[node name="FuelParticles" parent="Shuttle/Booster2" index="0"]
+position = Vector2( 12.5, 41 )
+
 [node name="Booster1" parent="Shuttle" instance=ExtResource( 7 )]
 scale = Vector2( 2, 2 )
 frame = 1
 release_direction = -1
+
+[node name="FuelParticles" parent="Shuttle/Booster1" index="0"]
+position = Vector2( -15, 41 )
 
 [node name="Fuel" parent="Shuttle" instance=ExtResource( 7 )]
 scale = Vector2( 2, 2 )
@@ -107,3 +113,7 @@ position = Vector2( 481, 1 )
 [connection signal="timeout" from="Shuttle/DockTimer" to="Shuttle" method="_on_DockTimer_timeout"]
 [connection signal="area_entered" from="WinArea" to="." method="_on_WinArea_area_entered"]
 [connection signal="area_entered" from="LoseArea3" to="LoseArea3" method="_on_LoseArea_area_entered"]
+
+[editable path="Shuttle/Booster2"]
+[editable path="Shuttle/Booster1"]
+[editable path="Shuttle/Fuel"]

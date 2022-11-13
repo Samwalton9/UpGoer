@@ -9,6 +9,10 @@ var rotation_strength : float = 0.0
 var detached : bool = false
 
 
+func _ready():
+	if frame != 0:
+		$FuelParticles.emitting = true
+
 func _physics_process(delta):
 	if detached:
 		velocity += (acceleration + Globals.GRAVITY) * delta
