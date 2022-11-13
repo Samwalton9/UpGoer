@@ -57,7 +57,7 @@ release_direction = -1
 [node name="FuelParticles" parent="LeftBooster" index="0"]
 position = Vector2( -14.5, 41 )
 
-[node name="Booster" parent="LeftBooster" index="2"]
+[node name="Booster" parent="LeftBooster" index="1"]
 frame = 1
 
 [node name="RightBooster" parent="." instance=ExtResource( 7 )]
@@ -68,10 +68,7 @@ release_direction = 1
 [node name="FuelParticles" parent="RightBooster" index="0"]
 position = Vector2( 12, 41 )
 
-[node name="Light2D" parent="RightBooster" index="1"]
-position = Vector2( 12.5, 17.5 )
-
-[node name="Booster" parent="RightBooster" index="2"]
+[node name="Booster" parent="RightBooster" index="1"]
 frame = 2
 
 [node name="Fuel" parent="." instance=ExtResource( 7 )]
