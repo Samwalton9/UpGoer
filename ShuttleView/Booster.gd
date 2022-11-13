@@ -24,3 +24,4 @@ func _physics_process(delta):
 func _on_preflight_success():
 	if $Booster.frame != 0:
 		$FuelParticles.emitting = true
+		$Light2D.enabled = true

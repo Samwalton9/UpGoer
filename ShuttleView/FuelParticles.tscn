@@ -29,6 +29,7 @@ scale_random = 1.0
 color_ramp = SubResource( 2 )
 
 [node name="FuelParticles" type="Particles2D"]
+emitting = false
 amount = 10000
 lifetime = 15.0
 preprocess = 0.2

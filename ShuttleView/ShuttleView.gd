@@ -4,6 +4,7 @@ onready var shuttle = $Shuttle
 onready var booster_one = $LeftBooster
 onready var booster_two = $RightBooster
 onready var fuel = $Fuel
+
 onready var remote_transform_one = $Shuttle/Booster1RemoteTransform
 onready var remote_transform_two = $Shuttle/Booster2RemoteTransform
 
