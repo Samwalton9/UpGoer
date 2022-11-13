@@ -13,8 +13,9 @@ gradient = SubResource( 7 )
 lifetime_randomness = 0.5
 flag_rotate_y = true
 flag_disable_z = true
+direction = Vector3( 1, -0.1, 0 )
 spread = 5.0
-gravity = Vector3( 0, 0, 0 )
+gravity = Vector3( 0, 150, 0 )
 initial_velocity = 200.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
@@ -23,7 +24,6 @@ color_ramp = SubResource( 8 )
 
 [node name="Particles2D" type="Particles2D"]
 position = Vector2( -55, 28 )
-emitting = false
 amount = 100
 lifetime = 0.3
 process_material = SubResource( 6 )
