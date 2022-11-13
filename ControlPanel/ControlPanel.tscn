@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Theme/ControlPanel.tres" type="Theme" id=1]
 [ext_resource path="res://Theme/Inconsolata-VariableFont_wdth,wght.ttf" type="DynamicFontData" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://ControlPanel/PreFlightButtons.gd" type="Script" id=5]
 [ext_resource path="res://ControlPanel/BoosterReleaseButton.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ControlPanel/GasGauge.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Audio/plastic_click_down.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Audio/plastic_click_up.ogg" type="AudioStream" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 58
@@ -143,61 +145,69 @@ script = ExtResource( 5 )
 
 [node name="Button" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
 margin_right = 143.0
-margin_bottom = 81.0
+margin_bottom = 80.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Button2" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
 margin_left = 147.0
 margin_right = 289.0
-margin_bottom = 81.0
+margin_bottom = 80.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Button3" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
-margin_top = 85.0
+margin_top = 84.0
 margin_right = 143.0
-margin_bottom = 165.0
+margin_bottom = 163.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Button4" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
 margin_left = 147.0
-margin_top = 85.0
+margin_top = 84.0
 margin_right = 289.0
-margin_bottom = 165.0
+margin_bottom = 163.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Button5" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
-margin_top = 169.0
+margin_top = 167.0
 margin_right = 143.0
-margin_bottom = 249.0
+margin_bottom = 246.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Button6" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
 margin_left = 147.0
-margin_top = 169.0
+margin_top = 167.0
 margin_right = 289.0
-margin_bottom = 249.0
+margin_bottom = 246.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Button7" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
-margin_top = 253.0
+margin_top = 250.0
 margin_right = 143.0
-margin_bottom = 333.0
+margin_bottom = 329.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Button8" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
 margin_left = 147.0
-margin_top = 253.0
+margin_top = 250.0
 margin_right = 289.0
-margin_bottom = 333.0
+margin_bottom = 329.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="ClickDownAudio" type="AudioStreamPlayer" parent="PreFlightButtons"]
+stream = ExtResource( 8 )
+volume_db = -5.0
+
+[node name="ClickUpAudio" type="AudioStreamPlayer" parent="PreFlightButtons"]
+stream = ExtResource( 9 )
+volume_db = -5.0
 
 [node name="PreFlightChecksLabel" type="Label" parent="."]
 margin_left = 32.0
