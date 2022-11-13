@@ -10,8 +10,7 @@ var detached : bool = false
 
 
 func _ready():
-	if frame != 0:
-		$FuelParticles.emitting = true
+	Events.connect("preflight_success", self, "_on_preflight_success")
 
 func _physics_process(delta):
 	if detached:
@@ -20,3 +19,8 @@ func _physics_process(delta):
 		rotation_degrees += rotation_strength
 
 		position += velocity
+
+
+func _on_preflight_success():
+	if frame != 0:
+		$FuelParticles.emitting = true
