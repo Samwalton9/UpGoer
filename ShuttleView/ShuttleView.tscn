@@ -37,28 +37,35 @@ margin_bottom = 917.0
 texture = SubResource( 2 )
 expand = true
 
+[node name="LeftBooster" parent="." instance=ExtResource( 7 )]
+position = Vector2( 240, 813 )
+scale = Vector2( 2, 2 )
+release_direction = -1
+
+[node name="FuelParticles" parent="LeftBooster" index="0"]
+position = Vector2( -14.5, 41 )
+
+[node name="Booster" parent="LeftBooster" index="1"]
+frame = 1
+
+[node name="RightBooster" parent="." instance=ExtResource( 7 )]
+position = Vector2( 240, 813 )
+scale = Vector2( 2, 2 )
+release_direction = 1
+
+[node name="FuelParticles" parent="RightBooster" index="0"]
+position = Vector2( 12, 41 )
+
+[node name="Booster" parent="RightBooster" index="1"]
+frame = 2
+
+[node name="Fuel" parent="." instance=ExtResource( 7 )]
+position = Vector2( 240, 813 )
+scale = Vector2( 2, 2 )
+
 [node name="Shuttle" type="Node2D" parent="."]
 position = Vector2( 240, 813 )
 script = ExtResource( 3 )
-
-[node name="Booster2" parent="Shuttle" instance=ExtResource( 7 )]
-scale = Vector2( 2, 2 )
-frame = 2
-release_direction = 1
-
-[node name="FuelParticles" parent="Shuttle/Booster2" index="0"]
-position = Vector2( -14.5, 39 )
-
-[node name="Booster1" parent="Shuttle" instance=ExtResource( 7 )]
-scale = Vector2( 2, 2 )
-frame = 1
-release_direction = -1
-
-[node name="FuelParticles" parent="Shuttle/Booster1" index="0"]
-position = Vector2( 12, 39 )
-
-[node name="Fuel" parent="Shuttle" instance=ExtResource( 7 )]
-scale = Vector2( 2, 2 )
 
 [node name="ShuttleSprite" type="AnimatedSprite" parent="Shuttle"]
 scale = Vector2( 2, 2 )
@@ -79,6 +86,18 @@ script = ExtResource( 2 )
 wait_time = 2.0
 one_shot = true
 autostart = true
+
+[node name="Booster1RemoteTransform" type="RemoteTransform2D" parent="Shuttle"]
+remote_path = NodePath("../../RightBooster")
+update_scale = false
+
+[node name="Booster2RemoteTransform" type="RemoteTransform2D" parent="Shuttle"]
+remote_path = NodePath("../../LeftBooster")
+update_scale = false
+
+[node name="FuelRemoteTransform" type="RemoteTransform2D" parent="Shuttle"]
+remote_path = NodePath("../../Fuel")
+update_scale = false
 
 [node name="Dock" type="Node2D" parent="."]
 position = Vector2( 240, 859 )
@@ -109,11 +128,13 @@ position = Vector2( -21, 1 )
 [node name="LoseArea2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 481, 1 )
 
+[node name="Node2D" type="Node2D" parent="."]
+
 [connection signal="timeout" from="Shuttle/BalanceTimer" to="Shuttle" method="_on_BalanceTimer_timeout"]
 [connection signal="timeout" from="Shuttle/DockTimer" to="Shuttle" method="_on_DockTimer_timeout"]
 [connection signal="area_entered" from="WinArea" to="." method="_on_WinArea_area_entered"]
 [connection signal="area_entered" from="LoseArea3" to="LoseArea3" method="_on_LoseArea_area_entered"]
 
-[editable path="Shuttle/Booster2"]
-[editable path="Shuttle/Booster1"]
-[editable path="Shuttle/Fuel"]
+[editable path="LeftBooster"]
+[editable path="RightBooster"]
+[editable path="Fuel"]

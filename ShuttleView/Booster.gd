@@ -1,4 +1,4 @@
-extends AnimatedSprite
+extends Node2D
 
 export var release_direction : int
 
@@ -22,5 +22,5 @@ func _physics_process(delta):
 
 
 func _on_preflight_success():
-	if frame != 0:
+	if $Booster.frame != 0:
 		$FuelParticles.emitting = true

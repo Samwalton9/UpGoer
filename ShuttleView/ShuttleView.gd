@@ -1,9 +1,11 @@
 extends Node2D
 
 onready var shuttle = $Shuttle
-onready var booster_one = $Shuttle/Booster1
-onready var booster_two = $Shuttle/Booster2
-onready var fuel = $Shuttle/Fuel
+onready var booster_one = $LeftBooster
+onready var booster_two = $RightBooster
+onready var fuel = $Fuel
+onready var remote_transform_one = $Shuttle/Booster1RemoteTransform
+onready var remote_transform_two = $Shuttle/Booster2RemoteTransform
 
 var booster_rotation_strength : float = 0.4
 
@@ -36,6 +38,10 @@ func _on_release_button_pressed(num):
 			if not booster.detached:
 				set_detached_state(booster)
 
+		for remote_transform in [remote_transform_one, remote_transform_two]:
+			remote_transform.update_position = false
+			remote_transform.update_rotation = false
+
 	# Fuel release
 	elif num == 2:
 		if not fuel.detached:
@@ -43,24 +49,13 @@ func _on_release_button_pressed(num):
 
 
 func set_detached_state(node):
-	var original_global_pos = node.global_position
-	reparent_to_self(node)
 	node.detached = true
-	# Retain global position after reparenting
-	node.global_position = original_global_pos
 
 	# Boosters will go left and right with speed; fuel won't.
 	var vert_accel = node.release_direction * 1
 	var hori_accel = node.release_direction * -0.6
 
 	node.acceleration = Vector2(vert_accel, hori_accel).rotated(node.rotation)
-	node.rotation = shuttle.rotation
 
 	# Boosters also spin out left/right, unlike fuel
 	node.rotation_strength = booster_rotation_strength * node.release_direction
-
-
-func reparent_to_self(node):
-	# Stop following shuttle position, join the parent scene instead
-	shuttle.remove_child(node)
-	add_child(node)
