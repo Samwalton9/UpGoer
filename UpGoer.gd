@@ -34,6 +34,7 @@ func _on_RestartButton_pressed():
 
 func _on_StartButton_pressed():
 	$StartScreen/Text.visible = false
+	$StartScreen/tsgjSprite.visible = false
 	$StartScreen/SharpenAnimation.play("FadeIn")
 
 

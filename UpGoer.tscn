@@ -275,13 +275,13 @@ valign = 1
 anims/FadeIn = SubResource( 9 )
 anims/RESET = SubResource( 10 )
 
-[node name="20sgjSprite" type="Sprite" parent="StartScreen"]
+[node name="tsgjSprite" type="Sprite" parent="StartScreen"]
 position = Vector2( 1378, 840 )
 scale = Vector2( 0.392857, 0.392857 )
 texture = ExtResource( 10 )
 script = ExtResource( 13 )
 
-[node name="LinkButton" type="LinkButton" parent="StartScreen/20sgjSprite"]
+[node name="LinkButton" type="LinkButton" parent="StartScreen/tsgjSprite"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -140.0
@@ -309,4 +309,4 @@ script = ExtResource( 9 )
 [connection signal="button_up" from="StartScreen/Text/StartButton" to="StartScreen" method="_on_StartButton_button_up"]
 [connection signal="pressed" from="StartScreen/Text/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="animation_finished" from="StartScreen/SharpenAnimation" to="." method="_on_AnimationPlayer_animation_finished"]
-[connection signal="pressed" from="StartScreen/20sgjSprite/LinkButton" to="StartScreen/20sgjSprite" method="_on_LinkButton_pressed"]
+[connection signal="pressed" from="StartScreen/tsgjSprite/LinkButton" to="StartScreen/tsgjSprite" method="_on_LinkButton_pressed"]
