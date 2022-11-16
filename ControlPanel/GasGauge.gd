@@ -52,7 +52,7 @@ func _process(delta):
 			if gauge_fill_timer.is_stopped():
 				gauge_fill_timer.start()
 
-		if not action_visible and level > 0.5:
+		if not action_visible and level > 0.8:
 			set_action_visible()
 
 		level += growth_amount

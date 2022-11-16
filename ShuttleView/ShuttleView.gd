@@ -24,6 +24,9 @@ func _physics_process(_delta):
 			booster.velocity = shuttle.velocity.rotated(rotation)
 			booster.acceleration = shuttle.acceleration
 
+	if Globals.flying:
+		$BackgroundTexture.rect_position.y += 1
+
 
 
 func _on_WinArea_area_entered(_area):
