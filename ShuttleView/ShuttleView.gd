@@ -47,7 +47,8 @@ func _on_release_button_pressed(num):
 	# Fuel release
 	elif num == 2:
 		if not fuel.detached:
-			set_detached_state(fuel)
+			fuel.detached = true
+			fuel.acceleration = Vector2(0, 1.5).rotated(fuel.rotation)
 			remote_transform_fuel.update_position = false
 			remote_transform_fuel.update_rotation = false
 
@@ -55,11 +56,11 @@ func _on_release_button_pressed(num):
 func set_detached_state(node):
 	node.detached = true
 
-	# Boosters will go left and right with speed; fuel won't.
-	var vert_accel = node.release_direction * 1
-	var hori_accel = node.release_direction * -0.6
+	# Boosters will go left or right with speed
+	var hori_accel = node.release_direction * 1
+	var vert_accel = node.release_direction * -0.6
 
-	node.acceleration = Vector2(vert_accel, hori_accel).rotated(node.rotation)
+	node.acceleration = Vector2(hori_accel, vert_accel).rotated(node.rotation)
 
 	# Boosters also spin out left/right, unlike fuel
 	node.rotation_strength = booster_rotation_strength * node.release_direction

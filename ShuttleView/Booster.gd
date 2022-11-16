@@ -11,6 +11,7 @@ var detached : bool = false
 
 func _ready():
 	Events.connect("preflight_success", self, "_on_preflight_success")
+	Events.connect("out_of_fuel", self, "_on_out_of_fuel")
 
 func _physics_process(delta):
 	if detached:
@@ -21,6 +22,10 @@ func _physics_process(delta):
 		position += velocity
 
 
+func _on_out_of_fuel():
+	$FuelParticles.out_of_fuel = true
+
+
 func _on_preflight_success():
 	if $Booster.frame != 0:
-		$FuelParticles.emitting = true
+		$FuelParticles/FuelParticles.emitting = true

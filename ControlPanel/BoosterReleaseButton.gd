@@ -18,6 +18,10 @@ func _on_ReleaseTimer_timeout():
 
 	ready_to_release = true
 
+	# Boosters
+	if release_num == 1:
+		Events.emit_signal("out_of_fuel")
+
 
 func _on_ReactionTimer_timeout():
 	# Reduce acceleration drastically if boosters haven't been released.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://ShuttleView/Assets/ShuttleFrames.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://ShuttleView/BalanceTimer.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://ShuttleView/EngineSmokeParticles.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Audio/engine.ogg" type="AudioStream" id=10]
 [ext_resource path="res://ShuttleView/EngineAudio.gd" type="Script" id=11]
+[ext_resource path="res://ShuttleView/Fuel.gd" type="Script" id=12]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0.25, 0.66791, 0.88806, 1 )
@@ -73,9 +74,15 @@ position = Vector2( 12, 41 )
 [node name="Booster" parent="RightBooster" index="1"]
 frame = 2
 
-[node name="Fuel" parent="." instance=ExtResource( 7 )]
+[node name="Fuel" type="Node2D" parent="."]
 position = Vector2( 240, 813 )
 scale = Vector2( 2, 2 )
+script = ExtResource( 12 )
+
+[node name="Booster" type="AnimatedSprite" parent="Fuel"]
+light_mask = 2
+frames = ExtResource( 1 )
+animation = "shuttle components"
 
 [node name="Shuttle" type="Node2D" parent="."]
 position = Vector2( 240, 813 )
@@ -147,4 +154,3 @@ script = ExtResource( 11 )
 
 [editable path="LeftBooster"]
 [editable path="RightBooster"]
-[editable path="Fuel"]
