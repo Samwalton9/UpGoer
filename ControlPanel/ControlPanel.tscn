@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Theme/ControlPanel.tres" type="Theme" id=1]
 [ext_resource path="res://Theme/Inconsolata-VariableFont_wdth,wght.ttf" type="DynamicFontData" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://ControlPanel/GasGauge.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Audio/plastic_click_down.ogg" type="AudioStream" id=8]
 [ext_resource path="res://Audio/plastic_click_up.ogg" type="AudioStream" id=9]
+[ext_resource path="res://ControlPanel/SwitchArray.gd" type="Script" id=10]
+[ext_resource path="res://ControlPanel/Switch.tscn" type="PackedScene" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 58
@@ -135,69 +137,112 @@ margin_top = 8.0
 margin_right = -7.0
 margin_bottom = -8.0
 
+[node name="SwitchArray" type="Control" parent="."]
+margin_left = 545.0
+margin_top = 320.0
+margin_right = 834.0
+margin_bottom = 868.0
+script = ExtResource( 10 )
+
+[node name="SwitchGrid" type="GridContainer" parent="SwitchArray"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+columns = 2
+
+[node name="Switch" parent="SwitchArray/SwitchGrid" instance=ExtResource( 11 )]
+margin_bottom = 180.0
+
+[node name="Switch2" parent="SwitchArray/SwitchGrid" instance=ExtResource( 11 )]
+margin_left = 147.0
+margin_right = 289.0
+margin_bottom = 180.0
+
+[node name="Switch3" parent="SwitchArray/SwitchGrid" instance=ExtResource( 11 )]
+margin_top = 184.0
+margin_bottom = 364.0
+
+[node name="Switch4" parent="SwitchArray/SwitchGrid" instance=ExtResource( 11 )]
+margin_left = 147.0
+margin_top = 184.0
+margin_right = 289.0
+margin_bottom = 364.0
+
+[node name="Switch5" parent="SwitchArray/SwitchGrid" instance=ExtResource( 11 )]
+margin_top = 368.0
+margin_bottom = 548.0
+
+[node name="Switch6" parent="SwitchArray/SwitchGrid" instance=ExtResource( 11 )]
+margin_left = 147.0
+margin_top = 368.0
+margin_right = 289.0
+margin_bottom = 548.0
+
+[node name="SwitchArrayTimer" type="Timer" parent="SwitchArray"]
+wait_time = 3.0
+
 [node name="PreFlightButtons" type="GridContainer" parent="."]
-margin_left = 31.0
-margin_top = 78.0
-margin_right = 320.0
-margin_bottom = 411.0
+margin_left = 40.0
+margin_top = 45.0
+margin_right = 329.0
+margin_bottom = 378.0
 columns = 2
 script = ExtResource( 5 )
 
 [node name="Button" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
 margin_right = 143.0
-margin_bottom = 80.0
+margin_bottom = 74.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Button2" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
 margin_left = 147.0
 margin_right = 289.0
-margin_bottom = 80.0
+margin_bottom = 74.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Button3" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
-margin_top = 84.0
+margin_top = 78.0
 margin_right = 143.0
-margin_bottom = 163.0
+margin_bottom = 152.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Button4" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
 margin_left = 147.0
-margin_top = 84.0
+margin_top = 78.0
 margin_right = 289.0
-margin_bottom = 163.0
+margin_bottom = 152.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Button5" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
-margin_top = 167.0
+margin_top = 156.0
 margin_right = 143.0
-margin_bottom = 246.0
+margin_bottom = 230.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Button6" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
 margin_left = 147.0
-margin_top = 167.0
+margin_top = 156.0
 margin_right = 289.0
-margin_bottom = 246.0
+margin_bottom = 230.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Button7" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
-margin_top = 250.0
+margin_top = 234.0
 margin_right = 143.0
-margin_bottom = 329.0
+margin_bottom = 307.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Button8" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
 margin_left = 147.0
-margin_top = 250.0
+margin_top = 234.0
 margin_right = 289.0
-margin_bottom = 329.0
+margin_bottom = 307.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -209,32 +254,39 @@ volume_db = -5.0
 stream = ExtResource( 9 )
 volume_db = -5.0
 
-[node name="PreFlightChecksLabel" type="Label" parent="."]
-margin_left = 32.0
-margin_top = 48.0
-margin_right = 175.0
-margin_bottom = 66.0
+[node name="PreFlightChecksLabel" type="Label" parent="PreFlightButtons"]
+margin_top = 311.0
+margin_right = 143.0
+margin_bottom = 329.0
 text = "Pre-flight checks"
 
 [node name="Gauges" type="Control" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 38.0
-margin_top = -329.0
-margin_right = 486.0
-margin_bottom = -101.0
+margin_left = 43.0
+margin_top = -448.0
+margin_right = 491.0
+margin_bottom = -220.0
 
 [node name="GasGauge" parent="Gauges" instance=ExtResource( 7 )]
 gauge_color = Color( 1, 0, 0, 1 )
 
 [node name="BoosterRelease" parent="." instance=ExtResource( 6 )]
-margin_top = 415.0
-margin_bottom = 585.0
+margin_left = 56.0
+margin_top = 696.0
+margin_right = 226.0
+margin_bottom = 866.0
 release_num = 1
 release_time = 8.0
 button_text = "Release boosters"
 
 [node name="FuelRelease" parent="." instance=ExtResource( 6 )]
+margin_left = 278.0
+margin_top = 696.0
+margin_right = 448.0
+margin_bottom = 866.0
 release_num = 2
 release_time = 13.0
 button_text = "Release fuel"
+
+[connection signal="timeout" from="SwitchArray/SwitchArrayTimer" to="SwitchArray" method="_on_SwitchArrayTimer_timeout"]
