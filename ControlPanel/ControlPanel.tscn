@@ -224,26 +224,8 @@ margin_top = -329.0
 margin_right = 486.0
 margin_bottom = -101.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Gauges"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_constants/separation = 25
-
-[node name="GasGauge" parent="Gauges/HBoxContainer" instance=ExtResource( 7 )]
-gauge_input = "gauge_one"
+[node name="GasGauge" parent="Gauges" instance=ExtResource( 7 )]
 gauge_color = Color( 1, 0, 0, 1 )
-
-[node name="GasGauge2" parent="Gauges/HBoxContainer" instance=ExtResource( 7 )]
-margin_left = 157.0
-margin_right = 290.0
-gauge_input = "gauge_two"
-gauge_color = Color( 0.968627, 1, 0, 1 )
-
-[node name="GasGauge3" parent="Gauges/HBoxContainer" instance=ExtResource( 7 )]
-margin_left = 315.0
-margin_right = 448.0
-gauge_input = "gauge_three"
-gauge_color = Color( 0, 0.0156863, 1, 1 )
 
 [node name="BoosterRelease" parent="." instance=ExtResource( 6 )]
 margin_top = 415.0

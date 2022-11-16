@@ -8,13 +8,13 @@ size = 52
 font_data = ExtResource( 1 )
 
 [node name="GasGauge" type="ColorRect"]
-margin_right = 132.0
-margin_bottom = 228.0
+margin_right = 441.0
+margin_bottom = 106.0
 size_flags_horizontal = 3
 color = Color( 0, 0, 0, 1 )
 script = ExtResource( 2 )
 
-[node name="GaugeLevel" type="ColorRect" parent="." groups=["Gauge"]]
+[node name="GaugeLevel" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 12.0
@@ -24,18 +24,21 @@ margin_bottom = -10.0
 color = Color( 1, 0, 0, 1 )
 
 [node name="KeyBox" type="ColorRect" parent="."]
-margin_left = 30.0
-margin_top = 236.0
-margin_right = 93.0
-margin_bottom = 299.0
-color = Color( 1, 0.890196, 0, 1 )
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -73.0
+margin_top = 13.0
+margin_right = 73.0
+margin_bottom = 76.0
+color = Color( 0.490196, 0.490196, 0.490196, 1 )
 
 [node name="Key" type="Label" parent="KeyBox"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
-text = "A"
 align = 1
 valign = 1
 
