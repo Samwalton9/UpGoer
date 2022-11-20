@@ -20,6 +20,8 @@ func _ready() -> void:
 	original_position = position
 	Globals.shuttle = self
 
+	Events.connect("gauge_explosion", self, "_on_gauge_explosion")
+
 
 func _physics_process(delta) -> void:
 	if Globals.flying:
@@ -46,3 +48,14 @@ func _on_BalanceTimer_timeout():
 			)
 	else:
 		skipped_first = true
+
+
+func _on_gauge_explosion():
+	var directions = [-1, 1]
+	var random_direction = directions[randi() % 2]
+
+	var explosion_velocity = rand_range(1,2) * random_direction
+
+	velocity.x += explosion_velocity
+
+	rotation_strength += random_direction * RANDOM_ROTATION_VARIATION

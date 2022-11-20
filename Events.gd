@@ -9,3 +9,5 @@ signal preflight_success()
 signal release_button_pressed(release_number)
 
 signal out_of_fuel()
+
+signal gauge_explosion()

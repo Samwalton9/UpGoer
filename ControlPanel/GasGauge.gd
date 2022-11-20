@@ -6,7 +6,8 @@ onready var gauge_fill_timer = $Timer
 var max_width
 var random_growth_speed
 var level = 0
-var action_visible = false
+var action_visible : bool = false
+var exploded : bool = false
 
 export var gauge_color : Color
 
@@ -49,7 +50,7 @@ func _process(delta):
 
 		if growth_amount > left_until_full:
 			growth_amount = 0
-			if gauge_fill_timer.is_stopped():
+			if gauge_fill_timer.is_stopped() and not exploded:
 				gauge_fill_timer.start()
 
 		if not action_visible and level > 0.8:
@@ -69,6 +70,6 @@ func set_action_visible():
 
 
 func _on_Timer_timeout():
-	# TODO: Instead of instantly failing, the gauge explodes and we give
-	# the shuttle random + or - x-axis acceleration
-	Events.emit_signal("game_over", "A gauge got too high.")
+	exploded = true
+	Events.emit_signal("gauge_explosion")
+	Globals.fail_message = "A gauge got too high."
