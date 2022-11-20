@@ -13,6 +13,10 @@ func _ready():
 	Events.connect("preflight_success", self, "_on_preflight_success")
 	Events.connect("out_of_fuel", self, "_on_out_of_fuel")
 
+	# Shader params are cached so this would otherwise remain true
+	# after reloading the scene.
+	$Booster.material.set_shader_param("active", false)
+
 func _physics_process(delta):
 	if detached:
 		velocity += (acceleration + Globals.GRAVITY) * delta
