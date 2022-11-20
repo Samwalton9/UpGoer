@@ -60,9 +60,6 @@ release_direction = -1
 [node name="FuelParticles" parent="LeftBooster" index="0"]
 position = Vector2( -14.5, 41 )
 
-[node name="Booster" parent="LeftBooster" index="1"]
-frame = 1
-
 [node name="RightBooster" parent="." instance=ExtResource( 7 )]
 position = Vector2( 240, 813 )
 scale = Vector2( 2, 2 )

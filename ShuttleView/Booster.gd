@@ -27,5 +27,5 @@ func _on_out_of_fuel():
 
 
 func _on_preflight_success():
-	if $Booster.frame != 0:
-		$FuelParticles/FuelParticles.emitting = true
+	$FuelParticles/FuelParticles.emitting = true
+	$Booster.material.set_shader_param("active", true)

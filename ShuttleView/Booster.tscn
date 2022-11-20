@@ -1,8 +1,30 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://ShuttleView/Assets/ShuttleFrames.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://ShuttleView/Assets/shuttle.png" type="Texture" id=1]
 [ext_resource path="res://ShuttleView/Booster.gd" type="Script" id=2]
 [ext_resource path="res://ShuttleView/FuelParticles.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform bool active = false;
+
+void fragment() {
+	vec4 originalColor = texture(TEXTURE, UV);
+
+	if(active) {
+		float yDist = pow(UV.y, 4) * 1.8;
+
+		//COLOR = vec4(yDist, yDist, 0.0, 1.0);
+		COLOR = originalColor + vec4(yDist, yDist*0.7, 0.0, 0.0);
+	} else {
+		COLOR = originalColor
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/active = false
 
 [node name="Booster" type="Node2D"]
 script = ExtResource( 2 )
@@ -10,7 +32,9 @@ script = ExtResource( 2 )
 [node name="FuelParticles" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, 46 )
 
-[node name="Booster" type="AnimatedSprite" parent="."]
+[node name="Booster" type="Sprite" parent="."]
 light_mask = 2
-frames = ExtResource( 1 )
-animation = "shuttle components"
+material = SubResource( 2 )
+texture = ExtResource( 1 )
+hframes = 4
+frame = 1
