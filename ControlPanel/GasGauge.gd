@@ -72,4 +72,4 @@ func set_action_visible():
 func _on_Timer_timeout():
 	exploded = true
 	Events.emit_signal("gauge_explosion")
-	Globals.fail_message = "A gauge got too high."
+	Globals.fail_message = "Pressure was too high."
