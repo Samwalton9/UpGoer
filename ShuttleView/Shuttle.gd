@@ -51,6 +51,7 @@ func _on_BalanceTimer_timeout():
 
 
 func _on_gauge_explosion():
+	# TODO: Add explosion effect on the relevant side.
 	var directions = [-1, 1]
 	var random_direction = directions[randi() % 2]
 
