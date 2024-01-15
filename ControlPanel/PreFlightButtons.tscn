@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5pf5wratwal1"]
+
+[ext_resource type="Script" path="res://ControlPanel/PreFlightButtons.gd" id="1_lkr6j"]
+[ext_resource type="AudioStream" uid="uid://b6qtxvo0s0hdh" path="res://Audio/plastic_click_down.ogg" id="2_63eaa"]
+[ext_resource type="PackedScene" uid="uid://ca5s0lif8syvq" path="res://ControlPanel/PreFlightButton.tscn" id="2_85gr0"]
+[ext_resource type="AudioStream" uid="uid://cp32loiuornv0" path="res://Audio/plastic_click_up.ogg" id="3_polyp"]
+
+[node name="PreFlightButtons" type="GridContainer"]
+offset_right = 362.0
+offset_bottom = 202.0
+theme_override_constants/h_separation = 80
+theme_override_constants/v_separation = 80
+columns = 5
+script = ExtResource("1_lkr6j")
+
+[node name="PreFlightButton" parent="." instance=ExtResource("2_85gr0")]
+layout_mode = 2
+
+[node name="PreFlightButton1" parent="." instance=ExtResource("2_85gr0")]
+layout_mode = 2
+
+[node name="PreFlightButton2" parent="." instance=ExtResource("2_85gr0")]
+layout_mode = 2
+
+[node name="PreFlightButton3" parent="." instance=ExtResource("2_85gr0")]
+layout_mode = 2
+
+[node name="PreFlightButton4" parent="." instance=ExtResource("2_85gr0")]
+layout_mode = 2
+
+[node name="PreFlightButton5" parent="." instance=ExtResource("2_85gr0")]
+layout_mode = 2
+
+[node name="PreFlightButton6" parent="." instance=ExtResource("2_85gr0")]
+layout_mode = 2
+
+[node name="PreFlightButton7" parent="." instance=ExtResource("2_85gr0")]
+layout_mode = 2
+
+[node name="PreFlightButton8" parent="." instance=ExtResource("2_85gr0")]
+layout_mode = 2
+
+[node name="PreFlightButton9" parent="." instance=ExtResource("2_85gr0")]
+layout_mode = 2
+
+[node name="PreFlightButton10" parent="." instance=ExtResource("2_85gr0")]
+layout_mode = 2
+
+[node name="PreFlightButton11" parent="." instance=ExtResource("2_85gr0")]
+layout_mode = 2
+
+[node name="PreFlightButton12" parent="." instance=ExtResource("2_85gr0")]
+layout_mode = 2
+
+[node name="PreFlightButton13" parent="." instance=ExtResource("2_85gr0")]
+layout_mode = 2
+
+[node name="PreFlightButton14" parent="." instance=ExtResource("2_85gr0")]
+layout_mode = 2
+
+[node name="ClickDownAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_63eaa")
+volume_db = -5.0
+
+[node name="ClickUpAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_polyp")
+volume_db = -5.0

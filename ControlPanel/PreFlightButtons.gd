@@ -11,9 +11,9 @@ var correct_preflight_checks = 0
 func _ready():
 	var preflight_buttons = get_tree().get_nodes_in_group("PreFlightButtons")
 	for button in preflight_buttons:
-		button.connect("pressed", Callable(self, "_on_button_pressed").bind(button))
-		button.connect("button_down", Callable(self, "_on_button_down"))
-		button.connect("button_up", Callable(self, "_on_button_up"))
+		button.button.connect("pressed", Callable(self, "_on_button_pressed").bind(button))
+		button.button.connect("button_down", Callable(self, "_on_button_down"))
+		button.button.connect("button_up", Callable(self, "_on_button_up"))
 
 
 	for _i in range(NUM_PREFLIGHT_CHECKS):
@@ -21,8 +21,8 @@ func _ready():
 		var button = preflight_buttons[random_choice]
 		preflight_buttons.pop_at(random_choice)
 
-		button.text = "X"
-		button.add_to_group("ButtonChecks")
+		button.select()
+		button.button.add_to_group("ButtonChecks")
 
 
 func passed_preflight():
@@ -31,11 +31,13 @@ func passed_preflight():
 
 func _on_button_pressed(button):
 	var button_checks = get_tree().get_nodes_in_group("ButtonChecks")
-	if button_checks.has(button):
+	if button_checks.has(button.button):
 
 		correct_preflight_checks += 1
-		button.disabled = true
+		button.selected()
 
+		# TODO: Too simple. Need to check if the correct set of buttons were
+		# toggled, not just if the three correct ones were at some point.
 		if correct_preflight_checks == 3:
 			passed_preflight()
 

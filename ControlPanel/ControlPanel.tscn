@@ -1,15 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://cesbgdet70qpa"]
+[gd_scene load_steps=13 format=3 uid="uid://cesbgdet70qpa"]
 
 [ext_resource type="Theme" uid="uid://cmh2yrw27laau" path="res://Theme/ControlPanel.tres" id="1"]
 [ext_resource type="FontFile" uid="uid://cmhfa7o0n0tfs" path="res://Theme/Inconsolata-VariableFont_wdth,wght.ttf" id="2"]
 [ext_resource type="Texture2D" uid="uid://ddh11re4ldgry" path="res://ControlPanel/Assets/ControlPanelBackground.png" id="2_ui86l"]
 [ext_resource type="Script" path="res://ControlPanel/Rotation box.gd" id="3"]
 [ext_resource type="Script" path="res://ControlPanel/FuelGauge.gd" id="4"]
-[ext_resource type="Script" path="res://ControlPanel/PreFlightButtons.gd" id="5"]
 [ext_resource type="PackedScene" path="res://ControlPanel/BoosterReleaseButton.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://mulr3lwdi75n" path="res://ControlPanel/GasGauge.tscn" id="7"]
-[ext_resource type="AudioStream" uid="uid://b6qtxvo0s0hdh" path="res://Audio/plastic_click_down.ogg" id="8"]
-[ext_resource type="AudioStream" uid="uid://cp32loiuornv0" path="res://Audio/plastic_click_up.ogg" id="9"]
+[ext_resource type="PackedScene" uid="uid://c5pf5wratwal1" path="res://ControlPanel/PreFlightButtons.tscn" id="8_v1oml"]
 [ext_resource type="Script" path="res://ControlPanel/SwitchArray.gd" id="10"]
 [ext_resource type="PackedScene" uid="uid://b5yw8tsylg8g6" path="res://ControlPanel/Switch.tscn" id="11"]
 
@@ -51,6 +49,7 @@ theme = ExtResource("1")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 texture = ExtResource("2_ui86l")
 
 [node name="OrientationLabel" type="Label" parent="."]
@@ -279,62 +278,12 @@ size_flags_vertical = 3
 [node name="SwitchArrayTimer" type="Timer" parent="SwitchArray"]
 wait_time = 3.0
 
-[node name="PreFlightButtons" type="GridContainer" parent="."]
+[node name="PreFlightButtons" parent="." instance=ExtResource("8_v1oml")]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 45.0
-offset_right = 421.0
-offset_bottom = 295.0
-columns = 2
-script = ExtResource("5")
-
-[node name="Button" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Button2" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Button3" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Button4" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Button5" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Button6" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Button7" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Button8" type="Button" parent="PreFlightButtons" groups=["PreFlightButtons"]]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="ClickDownAudio" type="AudioStreamPlayer" parent="PreFlightButtons"]
-stream = ExtResource("8")
-volume_db = -5.0
-
-[node name="ClickUpAudio" type="AudioStreamPlayer" parent="PreFlightButtons"]
-stream = ExtResource("9")
-volume_db = -5.0
+offset_left = 76.0
+offset_top = 102.0
+offset_right = 445.0
+offset_bottom = 311.0
 
 [node name="GasGauge" parent="." instance=ExtResource("7")]
 layout_mode = 0

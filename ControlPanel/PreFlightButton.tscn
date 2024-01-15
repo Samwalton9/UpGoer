@@ -1,0 +1,83 @@
+[gd_scene load_steps=11 format=3 uid="uid://ca5s0lif8syvq"]
+
+[ext_resource type="Script" path="res://ControlPanel/PreFlightButton.gd" id="1_ovu5q"]
+[ext_resource type="Texture2D" uid="uid://ddtqvmxsorp6x" path="res://ControlPanel/Assets/ToggleSwitch.png" id="1_wf5wi"]
+[ext_resource type="Texture2D" uid="uid://cjtdobiiblg15" path="res://ControlPanel/Assets/ToggleSwitchLightGlow.png" id="2_k5bow"]
+[ext_resource type="Texture2D" uid="uid://bow5r6wdv4ra" path="res://ControlPanel/Assets/ToggleSwitchLight.png" id="3_sifvb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsd8r"]
+atlas = ExtResource("3_sifvb")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dvld"]
+atlas = ExtResource("3_sifvb")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nihnv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsd8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dvld")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5y5x"]
+atlas = ExtResource("1_wf5wi")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvkav"]
+atlas = ExtResource("1_wf5wi")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dm5al"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5y5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvkav")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PreFlightButton" type="Control" groups=["PreFlightButtons"]]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ovu5q")
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LEDGlow" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -30)
+texture = ExtResource("2_k5bow")
+
+[node name="LEDSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -30)
+sprite_frames = SubResource("SpriteFrames_nihnv")
+
+[node name="ButtonSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dm5al")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
