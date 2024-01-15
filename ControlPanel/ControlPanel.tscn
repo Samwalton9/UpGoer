@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://cesbgdet70qpa"]
+[gd_scene load_steps=15 format=3 uid="uid://cesbgdet70qpa"]
 
 [ext_resource type="Theme" uid="uid://cmh2yrw27laau" path="res://Theme/ControlPanel.tres" id="1"]
 [ext_resource type="FontFile" uid="uid://cmhfa7o0n0tfs" path="res://Theme/Inconsolata-VariableFont_wdth,wght.ttf" id="2"]
+[ext_resource type="Texture2D" uid="uid://ddh11re4ldgry" path="res://ControlPanel/Assets/ControlPanelBackground.png" id="2_ui86l"]
 [ext_resource type="Script" path="res://ControlPanel/Rotation box.gd" id="3"]
 [ext_resource type="Script" path="res://ControlPanel/FuelGauge.gd" id="4"]
 [ext_resource type="Script" path="res://ControlPanel/PreFlightButtons.gd" id="5"]
@@ -46,14 +47,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="BackgroundImage" type="TextureRect" parent="."]
 layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -13.0
-offset_right = 12.0
-offset_bottom = 11.0
-color = Color(0.635294, 0.654902, 0.654902, 1)
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_ui86l")
 
 [node name="RotationBox" type="ColorRect" parent="."]
 layout_mode = 0
