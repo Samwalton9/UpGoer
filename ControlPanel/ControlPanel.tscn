@@ -53,6 +53,60 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_ui86l")
 
+[node name="OrientationLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 474.0
+offset_top = 154.0
+offset_right = 927.0
+offset_bottom = 172.0
+text = "Orientation"
+horizontal_alignment = 1
+
+[node name="InFlightLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 474.0
+offset_top = 447.0
+offset_right = 927.0
+offset_bottom = 465.0
+text = "In-flight actions"
+horizontal_alignment = 1
+
+[node name="ReleaseLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 633.0
+offset_right = 442.0
+offset_bottom = 651.0
+text = "Attachment release"
+horizontal_alignment = 1
+
+[node name="PressureLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 350.0
+offset_right = 442.0
+offset_bottom = 368.0
+text = "Fuel"
+horizontal_alignment = 1
+
+[node name="FuelLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 474.0
+offset_top = 15.0
+offset_right = 927.0
+offset_bottom = 33.0
+text = "Fuel"
+horizontal_alignment = 1
+
+[node name="PreFlightChecksLabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = 20.0
+offset_top = 15.0
+offset_right = 442.0
+offset_bottom = 33.0
+text = "Pre-flight checks"
+horizontal_alignment = 1
+
 [node name="RotationBox" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 5
@@ -72,6 +126,8 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -3.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = SubResource("1")
 text = "-140"
 horizontal_alignment = 1
@@ -152,10 +208,10 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -451.0
-offset_top = 30.0
-offset_right = -68.0
-offset_bottom = -797.0
+offset_left = -450.0
+offset_top = 43.0
+offset_right = -67.0
+offset_bottom = -803.0
 grow_horizontal = 0
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
@@ -170,6 +226,8 @@ offset_left = 7.0
 offset_top = 8.0
 offset_right = -7.0
 offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SwitchArray" type="Control" parent="."]
 anchors_preset = 0
@@ -278,24 +336,12 @@ volume_db = -5.0
 stream = ExtResource("9")
 volume_db = -5.0
 
-[node name="PreFlightChecksLabel" type="Label" parent="PreFlightButtons"]
-layout_mode = 2
-text = "Pre-flight checks"
-
-[node name="Gauges" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 12.0
-offset_top = -498.0
-offset_right = 460.0
-offset_bottom = -270.0
-grow_vertical = 0
-
-[node name="GasGauge" parent="Gauges" instance=ExtResource("7")]
+[node name="GasGauge" parent="." instance=ExtResource("7")]
 layout_mode = 0
-gauge_color = Color(1, 0, 0, 1)
+offset_left = 30.0
+offset_top = 421.0
+offset_right = 425.0
+offset_bottom = 546.0
 
 [node name="BoosterRelease" parent="." instance=ExtResource("6")]
 anchors_preset = 0

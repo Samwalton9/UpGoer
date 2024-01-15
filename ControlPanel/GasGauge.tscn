@@ -12,31 +12,46 @@ cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
-[node name="GasGauge" type="ColorRect"]
+[node name="GasGaugeControl" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 offset_right = 441.0
-offset_bottom = 106.0
+offset_bottom = 187.0
+
+[node name="GasGauge" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.566845
 size_flags_horizontal = 3
 color = Color(0, 0, 0, 1)
 script = ExtResource("2")
+gauge_color = Color(1, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
-[node name="GaugeContainer" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 12.0
-offset_top = 11.0
-offset_right = 428.0
-offset_bottom = 95.0
-
-[node name="GaugeLevel" type="ColorRect" parent="GaugeContainer"]
+[node name="GaugeContainer" type="Control" parent="GasGauge"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -416.0
+offset_left = 17.0
+offset_top = 15.0
+offset_right = -16.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GaugeLevel" type="ColorRect" parent="GasGauge/GaugeContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -408.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 0, 0, 1)
 
-[node name="KeyBox" type="ColorRect" parent="."]
+[node name="KeyBox" type="ColorRect" parent="GasGauge"]
 layout_mode = 0
 anchor_left = 0.5
 anchor_top = 1.0
@@ -48,18 +63,18 @@ offset_right = 73.0
 offset_bottom = 76.0
 color = Color(0.490196, 0.490196, 0.490196, 1)
 
-[node name="Key" type="Label" parent="KeyBox"]
+[node name="Key" type="Label" parent="GasGauge/KeyBox"]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("2")
 
-[node name="Timer" type="Timer" parent="." groups=["GaugeFillTimer"]]
+[node name="Timer" type="Timer" parent="GasGauge" groups=["GaugeFillTimer"]]
 wait_time = 0.3
 one_shot = true
 
-[node name="WarningLight" type="ColorRect" parent="."]
+[node name="WarningLight" type="ColorRect" parent="GasGauge"]
 layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
@@ -69,4 +84,4 @@ offset_right = 13.0
 offset_bottom = -11.0
 color = Color(0, 1, 0, 1)
 
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="GasGauge/Timer" to="GasGauge" method="_on_Timer_timeout"]
