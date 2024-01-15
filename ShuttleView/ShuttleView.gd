@@ -1,19 +1,19 @@
 extends Node2D
 
-onready var shuttle = $Shuttle
-onready var booster_one = $LeftBooster
-onready var booster_two = $RightBooster
-onready var fuel = $Fuel
+@onready var shuttle = $Shuttle
+@onready var booster_one = $LeftBooster
+@onready var booster_two = $RightBooster
+@onready var fuel = $Fuel
 
-onready var remote_transform_one = $Shuttle/Booster1RemoteTransform
-onready var remote_transform_two = $Shuttle/Booster2RemoteTransform
-onready var remote_transform_fuel = $Shuttle/FuelRemoteTransform
+@onready var remote_transform_one = $Shuttle/Booster1RemoteTransform
+@onready var remote_transform_two = $Shuttle/Booster2RemoteTransform
+@onready var remote_transform_fuel = $Shuttle/FuelRemoteTransform
 
 var booster_rotation_strength : float = 0.4
 
 
 func _ready():
-	Events.connect("release_button_pressed", self, "_on_release_button_pressed")
+	Events.connect("release_button_pressed", Callable(self, "_on_release_button_pressed"))
 
 
 func _physics_process(_delta):
@@ -25,7 +25,7 @@ func _physics_process(_delta):
 			booster.acceleration = shuttle.acceleration
 
 	if Globals.flying:
-		$BackgroundTexture.rect_position.y += 1
+		$BackgroundTexture.position.y += 1
 
 
 

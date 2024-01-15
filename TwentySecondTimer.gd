@@ -1,6 +1,6 @@
 extends Timer
 
-onready var launchTimer = $LaunchTimer
+@onready var launchTimer = $LaunchTimer
 
 func _ready():
 	# Reduce 20s wait time by launch timer

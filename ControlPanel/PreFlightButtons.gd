@@ -4,16 +4,16 @@ const NUM_PREFLIGHT_CHECKS = 3
 
 var correct_preflight_checks = 0
 
-onready var clickDownAudio = $ClickDownAudio
-onready var clickUpAudio = $ClickUpAudio
+@onready var clickDownAudio = $ClickDownAudio
+@onready var clickUpAudio = $ClickUpAudio
 
 
 func _ready():
 	var preflight_buttons = get_tree().get_nodes_in_group("PreFlightButtons")
 	for button in preflight_buttons:
-		button.connect("pressed", self, "_on_button_pressed", [button])
-		button.connect("button_down", self, "_on_button_down")
-		button.connect("button_up", self, "_on_button_up")
+		button.connect("pressed", Callable(self, "_on_button_pressed").bind(button))
+		button.connect("button_down", Callable(self, "_on_button_down"))
+		button.connect("button_up", Callable(self, "_on_button_up"))
 
 
 	for _i in range(NUM_PREFLIGHT_CHECKS):

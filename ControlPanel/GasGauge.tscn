@@ -1,58 +1,72 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://mulr3lwdi75n"]
 
-[ext_resource path="res://Theme/Inconsolata-VariableFont_wdth,wght.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://ControlPanel/GasGauge.gd" type="Script" id=2]
+[ext_resource type="FontFile" uid="uid://cmhfa7o0n0tfs" path="res://Theme/Inconsolata-VariableFont_wdth,wght.ttf" id="1"]
+[ext_resource type="Script" path="res://ControlPanel/GasGauge.gd" id="2"]
 
-[sub_resource type="DynamicFont" id=2]
-size = 52
-font_data = ExtResource( 1 )
+[sub_resource type="FontFile" id="2"]
+fallbacks = Array[Font]([ExtResource("1")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
 [node name="GasGauge" type="ColorRect"]
-margin_right = 441.0
-margin_bottom = 106.0
+offset_right = 441.0
+offset_bottom = 106.0
 size_flags_horizontal = 3
-color = Color( 0, 0, 0, 1 )
-script = ExtResource( 2 )
+color = Color(0, 0, 0, 1)
+script = ExtResource("2")
 
-[node name="GaugeLevel" type="ColorRect" parent="."]
+[node name="GaugeContainer" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 12.0
+offset_top = 11.0
+offset_right = 428.0
+offset_bottom = 95.0
+
+[node name="GaugeLevel" type="ColorRect" parent="GaugeContainer"]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 12.0
-margin_top = 10.0
-margin_right = -12.0
-margin_bottom = -10.0
-color = Color( 1, 0, 0, 1 )
+offset_right = -416.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 1)
 
 [node name="KeyBox" type="ColorRect" parent="."]
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -73.0
-margin_top = 13.0
-margin_right = 73.0
-margin_bottom = 76.0
-color = Color( 0.490196, 0.490196, 0.490196, 1 )
+offset_left = -73.0
+offset_top = 13.0
+offset_right = 73.0
+offset_bottom = 76.0
+color = Color(0.490196, 0.490196, 0.490196, 1)
 
 [node name="Key" type="Label" parent="KeyBox"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 2 )
-align = 1
-valign = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("2")
 
 [node name="Timer" type="Timer" parent="." groups=["GaugeFillTimer"]]
 wait_time = 0.3
 one_shot = true
 
 [node name="WarningLight" type="ColorRect" parent="."]
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -13.0
-margin_top = -37.0
-margin_right = 13.0
-margin_bottom = -11.0
-color = Color( 0, 1, 0, 1 )
+offset_left = -13.0
+offset_top = -37.0
+offset_right = 13.0
+offset_bottom = -11.0
+color = Color(0, 1, 0, 1)
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

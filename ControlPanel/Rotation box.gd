@@ -1,6 +1,6 @@
 extends ColorRect
 
-onready var rotationLabel = $RotationLabel
+@onready var rotationLabel = $RotationLabel
 
 
 func _ready():

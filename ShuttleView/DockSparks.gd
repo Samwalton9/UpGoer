@@ -1,14 +1,14 @@
-extends Particles2D
+extends GPUParticles2D
 
-onready var waitTimer = $ParticleWaitTimer
-onready var particleTimer = $ParticleTimer
+@onready var waitTimer = $ParticleWaitTimer
+@onready var particleTimer = $ParticleTimer
 
 
 func _ready():
 	if Globals.restarted:
 		start_timers()
 
-	Events.connect("game_start", self, "_on_game_start")
+	Events.connect("game_start", Callable(self, "_on_game_start"))
 
 
 func start_timers():

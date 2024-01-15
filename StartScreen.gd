@@ -1,7 +1,7 @@
 extends Control
 
-onready var clickDownAudio = $ClickDownAudio
-onready var clickUpAudio = $ClickUpAudio
+@onready var clickDownAudio = $ClickDownAudio
+@onready var clickUpAudio = $ClickUpAudio
 
 func _ready():
 	if Globals.restarted:

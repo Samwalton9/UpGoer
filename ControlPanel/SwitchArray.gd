@@ -8,9 +8,9 @@ func _ready():
 	# Switches should start randomly switched.
 	switches = get_tree().get_nodes_in_group("ReactionSwitch")
 	for switch in switches:
-		switch.connect("pressed", self, "_on_switch_pressed", [switch])
+		switch.connect("pressed", Callable(self, "_on_switch_pressed").bind(switch))
 
-	Events.connect("preflight_success", self, "_on_preflight_success")
+	Events.connect("preflight_success", Callable(self, "_on_preflight_success"))
 
 
 func _on_SwitchArrayTimer_timeout():

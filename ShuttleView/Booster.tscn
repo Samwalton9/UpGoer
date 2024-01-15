@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://cq5yug2oo63b5"]
 
-[ext_resource path="res://ShuttleView/Assets/shuttle.png" type="Texture" id=1]
-[ext_resource path="res://ShuttleView/Booster.gd" type="Script" id=2]
-[ext_resource path="res://ShuttleView/FuelParticles.tscn" type="PackedScene" id=3]
+[ext_resource type="Texture2D" uid="uid://bmjmoi7liwcvx" path="res://ShuttleView/Assets/shuttle.png" id="1"]
+[ext_resource type="Script" path="res://ShuttleView/Booster.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://dr1pihdcknrcv" path="res://ShuttleView/FuelParticles.tscn" id="3"]
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id="1"]
 code = "shader_type canvas_item;
 
 uniform bool active = false;
@@ -18,23 +18,23 @@ void fragment() {
 		//COLOR = vec4(yDist, yDist, 0.0, 1.0);
 		COLOR = originalColor + vec4(yDist, yDist*0.7, 0.0, 0.0);
 	} else {
-		COLOR = originalColor
+		COLOR = originalColor;
 	}
 }"
 
-[sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
-shader_param/active = false
+[sub_resource type="ShaderMaterial" id="2"]
+shader = SubResource("1")
+shader_parameter/active = false
 
 [node name="Booster" type="Node2D"]
-script = ExtResource( 2 )
+script = ExtResource("2")
 
-[node name="FuelParticles" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0, 46 )
+[node name="FuelParticles" parent="." instance=ExtResource("3")]
+position = Vector2(0, 46)
 
-[node name="Booster" type="Sprite" parent="."]
+[node name="Booster" type="Sprite2D" parent="."]
 light_mask = 2
-material = SubResource( 2 )
-texture = ExtResource( 1 )
+material = SubResource("2")
+texture = ExtResource("1")
 hframes = 4
 frame = 1

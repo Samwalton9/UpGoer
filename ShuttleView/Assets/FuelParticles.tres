@@ -1,27 +1,26 @@
-[gd_resource type="ParticlesMaterial" load_steps=3 format=2]
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://tnaomsn3pqgo"]
 
-[sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0, 0.0215517, 0.0646552, 0.112903, 0.206452, 0.512931, 1 )
-colors = PoolColorArray( 1, 0.940599, 0.708934, 1, 1, 0.904723, 0.533141, 1, 0.900879, 0.717576, 0.389429, 1, 0.846191, 0.490767, 0.221912, 1, 0.568627, 0.568627, 0.568627, 1, 0.786176, 0.786176, 0.786176, 1, 0.807843, 0.807843, 0.807843, 0 )
+[sub_resource type="Gradient" id="Gradient_fharq"]
+offsets = PackedFloat32Array(0, 0.110701, 0.236162, 0.487085, 1)
+colors = PackedColorArray(0.989587, 0.8867, 0.625429, 1, 0.81086, 0.51429, 0.255561, 1, 0.506513, 0.48697, 0.489163, 1, 0.715584, 0.717782, 0.70779, 1, 0.513726, 0.517647, 0.505882, 0)
 
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1ftri"]
+gradient = SubResource("Gradient_fharq")
 
 [resource]
 lifetime_randomness = 0.3
+particle_flag_disable_z = true
 emission_shape = 2
-emission_box_extents = Vector3( 5, 1, 1 )
-flag_disable_z = true
-direction = Vector3( 0, 1, 0 )
+emission_sphere_radius = 1.0
+angle_min = 60.0
+angle_max = 120.0
+direction = Vector3(0, 1, 0)
 spread = 20.0
-gravity = Vector3( 0, 5, 0 )
-initial_velocity = 15.0
-angular_velocity = 40.0
-angular_velocity_random = 1.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-angle = 90.0
-angle_random = 1.0
-scale = 0.6
-scale_random = 1.0
-color_ramp = SubResource( 2 )
+initial_velocity_min = 15.0
+initial_velocity_max = 15.0
+angular_velocity_min = 20.0
+angular_velocity_max = 60.0
+gravity = Vector3(0, 5, 0)
+scale_min = 0.5
+color_ramp = SubResource("GradientTexture1D_1ftri")
+turbulence_noise_strength = 0.46

@@ -1,6 +1,6 @@
 extends Control
 
-var game_over_text = "" setget set_game_over_text
+var game_over_text = "": set = set_game_over_text
 
 
 func set_game_over_text(new_text=""):

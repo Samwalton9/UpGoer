@@ -1,7 +1,8 @@
 extends Control
 
-onready var gauge = $GaugeLevel
-onready var gauge_fill_timer = $Timer
+@onready var gauge_box = $GaugeContainer
+@onready var gauge = $GaugeContainer/GaugeLevel
+@onready var gauge_fill_timer = $Timer
 
 var max_width
 var random_growth_speed
@@ -9,17 +10,14 @@ var level = 0
 var action_visible : bool = false
 var exploded : bool = false
 
-export var gauge_color : Color
+@export var gauge_color : Color
 
 func _ready():
 
-	max_width = gauge.rect_size.x
+	max_width = gauge_box.size.x
 
 	# Deliberate start speed so gauge is introduced at the right time
 	random_growth_speed = 0.15
-
-	# Initialise empty
-	gauge.rect_size.x = 0
 
 	gauge.color = gauge_color
 
@@ -37,7 +35,7 @@ func _process(delta):
 			$KeyBox/Key.text = ""
 
 		var fractional_width = (level * max_width)
-		gauge.rect_size.x = fractional_width
+		gauge.size.x = fractional_width
 
 		var growth_amount = random_growth_speed * delta
 
@@ -60,7 +58,7 @@ func _process(delta):
 
 
 func get_random_growth_speed() -> float:
-	return rand_range(0.1,0.3)
+	return randf_range(0.1,0.25)
 
 
 func set_action_visible():

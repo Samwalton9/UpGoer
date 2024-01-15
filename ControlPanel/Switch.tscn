@@ -1,21 +1,48 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://b5yw8tsylg8g6"]
 
-[ext_resource path="res://ControlPanel/Switch.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://ControlPanel/Switch.gd" id="1"]
 
-[node name="Switch" type="CheckButton" groups=["ReactionSwitch"]]
-margin_right = 143.0
-margin_bottom = 134.0
-focus_mode = 0
+[node name="Control" type="Control"]
+layout_mode = 3
+anchor_right = 0.0993056
+anchor_bottom = 0.148889
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.890196, 0.890196, 0.890196, 1)
+
+[node name="Switch" type="CheckButton" parent="." groups=["ReactionSwitch"]]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -25.5
+offset_right = 23.5
+offset_bottom = 134.0
+grow_horizontal = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource( 1 )
+focus_mode = 0
+script = ExtResource("1")
 
-[node name="ReactionTimer" type="Timer" parent="."]
-wait_time = 2.0
-
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="Switch"]
 visible = false
-margin_left = 85.0
-margin_top = 10.0
-margin_right = 125.0
-margin_bottom = 50.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -19.0
+offset_top = 10.0
+offset_right = 21.0
+offset_bottom = 50.0
+grow_horizontal = 2
+color = Color(0.392157, 0.831373, 0, 1)
+
+[node name="ReactionTimer" type="Timer" parent="Switch"]
+wait_time = 2.0

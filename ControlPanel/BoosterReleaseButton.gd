@@ -2,12 +2,12 @@ extends Control
 
 var ready_to_release = false
 
-export var release_num : int
-export var release_time : float
-export var button_text : String
+@export var release_num : int
+@export var release_time : float
+@export var button_text : String
 
 func _ready() -> void:
-	Events.connect("preflight_success", self, "_on_preflight_success")
+	Events.connect("preflight_success", Callable(self, "_on_preflight_success"))
 	$ReleaseTimer.wait_time = release_time
 	$ReleaseButton.text = button_text
 

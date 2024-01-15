@@ -1,6 +1,6 @@
 extends Node2D
 
-export var release_direction : int
+@export var release_direction : int
 
 var velocity = Vector2.ZERO
 var acceleration = Vector2.ZERO
@@ -10,12 +10,12 @@ var detached : bool = false
 
 
 func _ready():
-	Events.connect("preflight_success", self, "_on_preflight_success")
-	Events.connect("out_of_fuel", self, "_on_out_of_fuel")
+	Events.connect("preflight_success", Callable(self, "_on_preflight_success"))
+	Events.connect("out_of_fuel", Callable(self, "_on_out_of_fuel"))
 
 	# Shader params are cached so this would otherwise remain true
 	# after reloading the scene.
-	$Booster.material.set_shader_param("active", false)
+	$Booster.material.set_shader_parameter("active", false)
 
 func _physics_process(delta):
 	if detached:
@@ -32,4 +32,4 @@ func _on_out_of_fuel():
 
 func _on_preflight_success():
 	$FuelParticles/FuelParticles.emitting = true
-	$Booster.material.set_shader_param("active", true)
+	$Booster.material.set_shader_parameter("active", true)

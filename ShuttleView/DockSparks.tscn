@@ -1,34 +1,35 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://bjit64u16pfp8"]
 
-[ext_resource path="res://ShuttleView/Assets/spark.png" type="Texture" id=1]
-[ext_resource path="res://ShuttleView/DockSparks.gd" type="Script" id=2]
+[ext_resource type="Texture2D" uid="uid://ce0ph1n2p5qit" path="res://ShuttleView/Assets/spark.png" id="1"]
+[ext_resource type="Script" path="res://ShuttleView/DockSparks.gd" id="2"]
 
-[sub_resource type="Gradient" id=7]
-colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0.309804 )
+[sub_resource type="Gradient" id="Gradient_n1wv0"]
+offsets = PackedFloat32Array(0, 0.95203)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture" id=8]
-gradient = SubResource( 7 )
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6d1su"]
+gradient = SubResource("Gradient_n1wv0")
 
-[sub_resource type="ParticlesMaterial" id=6]
+[sub_resource type="ParticleProcessMaterial" id="6"]
 lifetime_randomness = 0.5
-flag_rotate_y = true
-flag_disable_z = true
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
 spread = 5.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 200.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-scale = 0.4
-color_ramp = SubResource( 8 )
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.35
+scale_max = 0.45
+color_ramp = SubResource("GradientTexture1D_6d1su")
 
-[node name="Particles2D" type="Particles2D"]
-position = Vector2( -55, 28 )
+[node name="GPUParticles2D" type="GPUParticles2D"]
+position = Vector2(-55, 28)
 emitting = false
 amount = 100
+process_material = SubResource("6")
+texture = ExtResource("1")
 lifetime = 0.3
-process_material = SubResource( 6 )
-texture = ExtResource( 1 )
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="ParticleWaitTimer" type="Timer" parent="."]
 one_shot = true

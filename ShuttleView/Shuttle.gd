@@ -20,7 +20,7 @@ func _ready() -> void:
 	original_position = position
 	Globals.shuttle = self
 
-	Events.connect("gauge_explosion", self, "_on_gauge_explosion")
+	Events.connect("gauge_explosion", Callable(self, "_on_gauge_explosion"))
 
 
 func _physics_process(delta) -> void:
@@ -28,7 +28,7 @@ func _physics_process(delta) -> void:
 		velocity += (acceleration + Globals.GRAVITY) * delta
 
 		if powered:
-			var velocity_rotated = velocity.rotated(deg2rad(rotation_degrees))
+			var velocity_rotated = velocity.rotated(deg_to_rad(rotation_degrees))
 			position += velocity_rotated
 		else:
 			position += velocity
@@ -42,7 +42,7 @@ func _physics_process(delta) -> void:
 func _on_BalanceTimer_timeout():
 	if skipped_first:
 		# Update rotation strength
-		rotation_strength = rand_range(
+		rotation_strength = randf_range(
 			rotation_strength - RANDOM_ROTATION_VARIATION,
 			rotation_strength + RANDOM_ROTATION_VARIATION
 			)
@@ -55,7 +55,7 @@ func _on_gauge_explosion():
 	var directions = [-1, 1]
 	var random_direction = directions[randi() % 2]
 
-	var explosion_velocity = rand_range(1,2) * random_direction
+	var explosion_velocity = randf_range(1,2) * random_direction
 
 	velocity.x += explosion_velocity
 

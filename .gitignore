@@ -1,3 +1,4 @@
 .import/
 Export/
 .DS_Store
+.godot/

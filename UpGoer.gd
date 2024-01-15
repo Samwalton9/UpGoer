@@ -1,10 +1,10 @@
 extends Node2D
 
-onready var timer = $TwentySecondTimer
-onready var gameOver = $GameOver
+@onready var timer = $TwentySecondTimer
+@onready var gameOver = $GameOver
 
 func _ready() -> void:
-	Events.connect("game_over", self, "_on_game_over")
+	Events.connect("game_over", Callable(self, "_on_game_over"))
 	gameOver.visible = false
 
 
