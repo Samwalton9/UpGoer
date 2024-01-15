@@ -2,8 +2,6 @@ extends GridContainer
 
 const NUM_PREFLIGHT_CHECKS = 3
 
-var correct_preflight_checks = 0
-
 @onready var clickDownAudio = $ClickDownAudio
 @onready var clickUpAudio = $ClickUpAudio
 
@@ -30,16 +28,16 @@ func passed_preflight():
 
 
 func _on_button_pressed(button):
-	var button_checks = get_tree().get_nodes_in_group("ButtonChecks")
-	if button_checks.has(button.button):
+	var intended_buttons = get_tree().get_nodes_in_group("ButtonChecks")
+	if intended_buttons.has(button.button):
 
-		correct_preflight_checks += 1
 		button.selected()
+		button.button.remove_from_group("ButtonChecks")
 
-		# TODO: Too simple. Need to check if the correct set of buttons were
-		# toggled, not just if the three correct ones were at some point.
-		if correct_preflight_checks == 3:
+		if get_tree().get_nodes_in_group("ButtonChecks").is_empty():
 			passed_preflight()
+	else:
+		Events.emit_signal("game_over", "Toggled an unnecessary pre-flight check.")
 
 
 func _on_button_down():
