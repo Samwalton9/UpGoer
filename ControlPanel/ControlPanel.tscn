@@ -1,11 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://cesbgdet70qpa"]
+[gd_scene load_steps=36 format=3 uid="uid://cesbgdet70qpa"]
 
 [ext_resource type="Theme" uid="uid://cmh2yrw27laau" path="res://Theme/ControlPanel.tres" id="1"]
 [ext_resource type="FontFile" uid="uid://cmhfa7o0n0tfs" path="res://Theme/Inconsolata-VariableFont_wdth,wght.ttf" id="2"]
 [ext_resource type="Texture2D" uid="uid://ddh11re4ldgry" path="res://ControlPanel/Assets/ControlPanelBackground.png" id="2_ui86l"]
 [ext_resource type="Script" path="res://ControlPanel/Rotation box.gd" id="3"]
-[ext_resource type="Script" path="res://ControlPanel/FuelGauge.gd" id="4"]
+[ext_resource type="Texture2D" uid="uid://bnmvy6mjo3rw3" path="res://ControlPanel/Assets/Clock.png" id="5_njhvd"]
 [ext_resource type="PackedScene" path="res://ControlPanel/BoosterReleaseButton.tscn" id="6"]
+[ext_resource type="Script" path="res://ControlPanel/FuelClock.gd" id="6_mi0ki"]
 [ext_resource type="PackedScene" uid="uid://mulr3lwdi75n" path="res://ControlPanel/GasGauge.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://c5pf5wratwal1" path="res://ControlPanel/PreFlightButtons.tscn" id="8_v1oml"]
 [ext_resource type="Script" path="res://ControlPanel/SwitchArray.gd" id="10"]
@@ -34,6 +35,161 @@ cache/0/16/0/underline_position = 0.0
 cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0ijo"]
+atlas = ExtResource("5_njhvd")
+region = Rect2(0, 0, 180, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_led0u"]
+atlas = ExtResource("5_njhvd")
+region = Rect2(180, 0, 180, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywuib"]
+atlas = ExtResource("5_njhvd")
+region = Rect2(360, 0, 180, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fv26p"]
+atlas = ExtResource("5_njhvd")
+region = Rect2(540, 0, 180, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu8gb"]
+atlas = ExtResource("5_njhvd")
+region = Rect2(720, 0, 180, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4jkx"]
+atlas = ExtResource("5_njhvd")
+region = Rect2(900, 0, 180, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gbd0"]
+atlas = ExtResource("5_njhvd")
+region = Rect2(1080, 0, 180, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o03rw"]
+atlas = ExtResource("5_njhvd")
+region = Rect2(1260, 0, 180, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idxlv"]
+atlas = ExtResource("5_njhvd")
+region = Rect2(1440, 0, 180, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0acs"]
+atlas = ExtResource("5_njhvd")
+region = Rect2(1620, 0, 180, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brcif"]
+atlas = ExtResource("5_njhvd")
+region = Rect2(1800, 0, 180, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dugf"]
+atlas = ExtResource("5_njhvd")
+region = Rect2(1980, 0, 180, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adrxd"]
+atlas = ExtResource("5_njhvd")
+region = Rect2(2160, 0, 180, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljofw"]
+atlas = ExtResource("5_njhvd")
+region = Rect2(2340, 0, 180, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_214kd"]
+atlas = ExtResource("5_njhvd")
+region = Rect2(2520, 0, 180, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_suqi1"]
+atlas = ExtResource("5_njhvd")
+region = Rect2(2700, 0, 180, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6h1ag"]
+atlas = ExtResource("5_njhvd")
+region = Rect2(2880, 0, 180, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8b4m"]
+atlas = ExtResource("5_njhvd")
+region = Rect2(3060, 0, 180, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vr8hx"]
+atlas = ExtResource("5_njhvd")
+region = Rect2(3240, 0, 180, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdl5e"]
+atlas = ExtResource("5_njhvd")
+region = Rect2(3420, 0, 180, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqaa8"]
+atlas = ExtResource("5_njhvd")
+region = Rect2(3600, 0, 180, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sj056"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0ijo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_led0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywuib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fv26p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wu8gb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4jkx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gbd0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o03rw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idxlv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0acs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_brcif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dugf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adrxd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljofw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_214kd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_suqi1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6h1ag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8b4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vr8hx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdl5e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqaa8")
+}],
+"loop": true,
+"name": &"clock",
+"speed": 1.0
+}]
 
 [node name="ControlPanel" type="Control"]
 layout_mode = 3
@@ -201,32 +357,11 @@ offset_top = 27.0
 offset_right = 54.0
 offset_bottom = 45.0
 
-[node name="FuelGauge" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -450.0
-offset_top = 43.0
-offset_right = -67.0
-offset_bottom = -803.0
-grow_horizontal = 0
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-script = ExtResource("4")
-
-[node name="FuelLevel" type="ColorRect" parent="FuelGauge"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 7.0
-offset_top = 8.0
-offset_right = -7.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="FuelClock" type="AnimatedSprite2D" parent="."]
+position = Vector2(699, 79)
+sprite_frames = SubResource("SpriteFrames_sj056")
+animation = &"clock"
+script = ExtResource("6_mi0ki")
 
 [node name="SwitchArray" type="Control" parent="."]
 anchors_preset = 0

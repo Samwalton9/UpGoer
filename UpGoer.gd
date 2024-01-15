@@ -3,11 +3,6 @@ extends Node2D
 @onready var timer = $TwentySecondTimer
 
 
-func _process(_delta) -> void:
-	if Globals.flying:
-		Globals.shuttle_fuel_percentage = timer.time_left/timer.wait_time
-
-
 func _on_TwentySecondTimer_timeout():
 	Events.emit_signal("game_over", "You ran out of fuel.")
 
